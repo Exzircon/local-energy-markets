@@ -1,2 +1,3 @@
 res://main.tscn
-res://agents_manager.gd
+res://scripts/global/pathing.gd
+res://scripts/building_manager.gd

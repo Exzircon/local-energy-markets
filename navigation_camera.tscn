@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jcx7ihtse1di"]
+
+[ext_resource type="Script" uid="uid://cihv0bp716um0" path="res://scripts/camera_controller.gd" id="1_fei2m"]
+
+[node name="NavCamera" type="Camera2D"]
+script = ExtResource("1_fei2m")

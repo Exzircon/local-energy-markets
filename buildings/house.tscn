@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cissi7prs66j5"]
+
+[ext_resource type="Texture2D" uid="uid://bgm87s42jixlh" path="res://House.png" id="1_j2dgx"]
+[ext_resource type="Script" uid="uid://cf8yqdu5fecsu" path="res://scripts/building.gd" id="1_lcdoo"]
+
+[node name="House" type="Sprite2D" groups=["Building"]]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_j2dgx")
+script = ExtResource("1_lcdoo")
