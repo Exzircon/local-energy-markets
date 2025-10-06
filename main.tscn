@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c76lfm8vppkak"]
+
+[ext_resource type="Script" uid="uid://dk65hhsjxx0sd" path="res://agents_manager.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://c0bplsy3xqptw" path="res://camera_2d.gd" id="2_0xm2m"]
+
+[node name="Main" type="Node2D"]
+
+[node name="AgentsManager" type="Node2D" parent="."]
+script = ExtResource("1_h2yge")
+num_buildings = 1000
+K = 35
+k_shift_frames = 45
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.15, 0.15)
+script = ExtResource("2_0xm2m")
