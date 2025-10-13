@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://berxnuvfk4sny"]
+
+[ext_resource type="Script" uid="uid://baydu37nbk2tu" path="res://data/custom_classes/particle_path_2d.gd" id="1_ivxkr"]
+
+[sub_resource type="Curve2D" id="Curve2D_fc2v2"]
+
+[node name="ParticlePath2D" type="Path2D"]
+curve = SubResource("Curve2D_fc2v2")
+script = ExtResource("1_ivxkr")

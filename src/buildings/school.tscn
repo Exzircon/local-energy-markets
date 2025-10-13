@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://7fjokfora8dw"]
+
+[ext_resource type="Texture2D" uid="uid://gt2dnsu7de8e" path="res://assets/icons/House.png" id="1_l0iij"]
+[ext_resource type="Script" uid="uid://cqva4h5a1klyy" path="res://data/scripts/school.gd" id="2_r2w1k"]
+[ext_resource type="Script" uid="uid://bqsu12j0cjd1a" path="res://data/scripts/building_container.gd" id="3_1jn54"]
+[ext_resource type="LabelSettings" uid="uid://ddfnr4u2d2qog" path="res://assets/resources/school_labels.tres" id="3_3lrkn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jn54"]
+radius = 13.333333
+
+[node name="School" type="Sprite2D"]
+z_index = 2
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_l0iij")
+script = ExtResource("2_r2w1k")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+z_index = 100
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -88.0
+offset_right = 188.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+script = ExtResource("3_1jn54")
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+show_behind_parent = true
+custom_minimum_size = Vector2(5.395, 23.99)
+layout_mode = 2
+size_flags_vertical = 3
+localize_numeral_system = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name: School"
+label_settings = ExtResource("3_3lrkn")
+horizontal_alignment = 1
+
+[node name="ConsumptionLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Con: 193 MWH"
+label_settings = ExtResource("3_3lrkn")
+horizontal_alignment = 1
+
+[node name="ProductionLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Prod: 237 MWH"
+label_settings = ExtResource("3_3lrkn")
+horizontal_alignment = 1
+
+[node name="HoverArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea"]
+position = Vector2(0, 1.6666666)
+shape = SubResource("CircleShape2D_1jn54")
