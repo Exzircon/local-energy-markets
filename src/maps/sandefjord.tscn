@@ -105,3 +105,7 @@ position = Vector2(37, 298)
 
 [node name="Vesterøy Skole" parent="." instance=ExtResource("3_orbt3")]
 position = Vector2(111, 317)
+
+[node name="Sykehus" parent="." instance=ExtResource("3_orbt3")]
+position = Vector2(187, 85.000015)
+consumption = 300.0

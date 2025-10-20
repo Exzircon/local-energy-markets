@@ -9,7 +9,7 @@
 radius = 13.333333
 
 [node name="School" type="Sprite2D"]
-z_index = 2
+z_index = 10
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_l0iij")
 script = ExtResource("2_r2w1k")
@@ -17,6 +17,7 @@ script = ExtResource("2_r2w1k")
 [node name="PanelContainer" type="PanelContainer" parent="."]
 visible = false
 z_index = 100
+z_as_relative = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0

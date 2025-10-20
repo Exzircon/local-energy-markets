@@ -34,8 +34,8 @@ var max_capacity: float = 100.0
 @onready var collision_shape_2d: CollisionShape2D = $HoverArea/CollisionShape2D
 #endregion
 
-
-
+func _init() -> void:
+	num_solar_panels = randi_range(0, 4)
 
 
 func _ready() -> void:
@@ -44,14 +44,27 @@ func _ready() -> void:
 	hover_area.connect("mouse_entered", mouse_entered)
 	hover_area.connect("mouse_exited", mouse_exited)
 
+@warning_ignore("unused_parameter")
+func _physics_process(delta: float) -> void:
+	_update_color()
+	consumption_label.text = "Con: " + str(consumption)
+	production_label.text = "Prod: " + str(generation)
+
+
 func mouse_entered() -> void:
 	panel_container.show()
 
 func mouse_exited() -> void:
 	panel_container.hide()
 
-func tick(tick: int) -> void:
-	if consumption > generation:
-		PowerManager.request_power(self, consumption - generation)
-	elif consumption < generation:
-		PowerManager.provide_power(self, generation - consumption)
+func tick() -> void:
+	#print(generation - consumption)
+	consumption = randf_range(0.0, 15.0)
+	PowerManager.add_to_power_tracker(self, generation - consumption)
+	
+
+func _update_color() -> void:
+	if satisfaction > 1.0:
+		self_modulate = mid_color.lerp(high_color, satisfaction - 1.0)
+	else:
+		self_modulate = low_color.lerp(mid_color, satisfaction)

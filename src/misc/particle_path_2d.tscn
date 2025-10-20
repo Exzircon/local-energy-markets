@@ -5,5 +5,7 @@
 [sub_resource type="Curve2D" id="Curve2D_fc2v2"]
 
 [node name="ParticlePath2D" type="Path2D"]
+z_index = 5
+z_as_relative = false
 curve = SubResource("Curve2D_fc2v2")
 script = ExtResource("1_ivxkr")

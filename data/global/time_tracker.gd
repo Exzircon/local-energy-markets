@@ -1,11 +1,18 @@
 extends Node
 
 
-signal Tick(tick: int)
-
-var tick: int = 0
+signal Tick()
+signal Pre_Tick()
+signal Post_Tick()
 
 func emit_tick() -> void:
-	PowerManager.pre_tick()
-	tick += 1
-	Tick.emit(tick)
+	Pre_Tick.emit()
+	Tick.emit()
+	Post_Tick.emit()
+
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEvent:
+		if event.is_action_pressed("ui_accept"):
+			emit_tick()

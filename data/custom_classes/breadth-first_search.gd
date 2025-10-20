@@ -55,6 +55,7 @@ func search(start: int, goal: int) -> Array:
 	'''
 	#print("BFSearch start!")
 	#print("Wat?: ", goal)
+	return [start, goal]
 	var visited: Array = []
 	var path: Array = []
 	var queue = [[start]]
