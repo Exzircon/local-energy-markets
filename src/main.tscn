@@ -1,10 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfp776tuax0v5"]
+[gd_scene load_steps=5 format=3 uid="uid://cfp776tuax0v5"]
 
 [ext_resource type="PackedScene" uid="uid://2lhl5mvx6phg" path="res://src/maps/sandefjord.tscn" id="1_eewff"]
 [ext_resource type="PackedScene" uid="uid://drkkqwax7e1ja" path="res://src/misc/navigation_camera.tscn" id="2_gh0ne"]
+[ext_resource type="Texture2D" uid="uid://146m32ouxbjx" path="res://assets/icons/sun.svg" id="3_3cfgd"]
+[ext_resource type="Script" uid="uid://c38impyalaiyq" path="res://data/scripts/sun_texture.gd" id="4_3cfgd"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Sandefjord" parent="." instance=ExtResource("1_eewff")]
 
 [node name="NavCamera" parent="." instance=ExtResource("2_gh0ne")]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SunTexture" type="TextureRect" parent="GUI/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_3cfgd")
+script = ExtResource("4_3cfgd")

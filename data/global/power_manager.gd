@@ -66,6 +66,8 @@ func balance_grid_by_consumption() -> void:
 		var amount = min(-power_dict[req], power_dict[prov])
 		power_dict[req] = power_dict[req] + amount
 		power_dict[prov] = power_dict[prov] - amount
+		req.external_power += amount
+		prov.external_power -= amount
 		_draw_power_path(bfs.nodes.find(prov), bfs.nodes.find(req))
 	
 

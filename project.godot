@@ -19,6 +19,7 @@ config/icon="res://assets/icons/icon.svg"
 
 PowerManager="*res://data/global/power_manager.gd"
 TimeTracker="*res://data/global/time_tracker.gd"
+Weather="*res://src/misc/weather.tscn"
 
 [file_customization]
 

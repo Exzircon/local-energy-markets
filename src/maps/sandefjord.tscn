@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://2lhl5mvx6phg"]
+[gd_scene load_steps=5 format=3 uid="uid://2lhl5mvx6phg"]
 
 [ext_resource type="Texture2D" uid="uid://fdbap6dav8qn" path="res://assets/maps/SandefjordKartInfill.png" id="1_lg367"]
 [ext_resource type="Script" uid="uid://cmy1m82dyenea" path="res://data/scripts/map.gd" id="2_orbt3"]
 [ext_resource type="PackedScene" uid="uid://7fjokfora8dw" path="res://src/buildings/school.tscn" id="3_orbt3"]
+[ext_resource type="Texture2D" uid="uid://jik0r0yw3l1g" path="res://assets/icons/hospital.png" id="4_orbt3"]
 
 [node name="Sandefjord" type="Sprite2D"]
 self_modulate = Color(0.30980393, 0.3372549, 0.23137255, 1)
@@ -107,5 +108,7 @@ position = Vector2(37, 298)
 position = Vector2(111, 317)
 
 [node name="Sykehus" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(187, 85.000015)
-consumption = 300.0
+position = Vector2(187.00002, 85)
+texture = ExtResource("4_orbt3")
+consumption = 30.0
+randomize_consumption = false
