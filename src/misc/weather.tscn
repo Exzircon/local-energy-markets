@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cip2re5caxw1c"]
+
+[ext_resource type="Script" uid="uid://m3khsqv826yq" path="res://data/global/weather.gd" id="1_fd32c"]
+
+[sub_resource type="Curve" id="Curve_fd32c"]
+_data = [Vector2(0.15801886, 0), 0.0, 0.0, 0, 0, Vector2(0.3601752, 0.83503175), 1.4237666, 1.4237666, 0, 0, Vector2(0.6971024, 0.8850221), -1.3188577, -1.3188577, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="Weather" type="Node"]
+script = ExtResource("1_fd32c")
+sun_curve = SubResource("Curve_fd32c")
