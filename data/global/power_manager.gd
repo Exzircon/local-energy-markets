@@ -1,80 +1,90 @@
 extends Node
 
-var power_dict: Dictionary = {}
+#TODO: REMOVE TICK FUNCTIONALITY, RUN EVERYTHING IN PHYSICS_PROCEES INSTEAD
+
+#Array for storing all buildings for quicker lookup
+var buildings: Array = []
 
 var particle_paths: Array[ParticlePath2D] = []
-var bfs: BreadthFirstSearch
-var map: Map
+var bfs: BreadthFirstSearch #TODO: OLD
+var map: Map #TODO: OLD
+#var ts: TransportationSolver = TransportationSolver.new()
 
 func _ready() -> void:
-	TimeTracker.connect("Tick", tick)
-	TimeTracker.connect("Pre_Tick", pre_tick)
-	TimeTracker.connect("Post_Tick", post_tick)
+	print(buildings)
+	#ts.solve()
 
-func add_to_power_tracker(agent, amount: float) -> void:
-	power_dict[agent] = amount
+func _physics_process(delta: float) -> void:
+	#distribute_power()
+	balance_grid()
 
-func pre_tick() -> void:
-	power_dict = {}
-	_clear_power_paths()
-
-
-func tick() -> void:
-	pass
-
-func post_tick() -> void:
-	#print("WAH!")
-	#_draw_power_path(0, 8)
-	#print("Power: ", power_dict)
-	#print()
-	#print("Balance: ", get_grid_balance())
-	#balance_grid()
-	balance_grid_by_consumption()
-	#print()
-	#print("Power Post: ", power_dict)
+func distribute_power() -> void:
+	var has_excess: Array[Building] = []
+	var has_deficit: Array[Building] = []
+	for building in buildings:
+		#print(building.battery_percentage)
+		if building.power_state == building.PowerStates.EXCESS:
+			has_excess.append(building)
+		elif building.power_state == building.PowerStates.DEFICIT:
+			has_deficit.append(building)
+	for building in has_deficit:
+		var cost_arr: Array = get_cost_array(building, has_excess)
+		var cheapest_idx: int = _get_lowest_idx(cost_arr)
+		var provider = has_excess[cheapest_idx]
+		building.current_power += provider.send_power(building, building.power_delta)
 
 func balance_grid() -> void:
-	for key in power_dict.keys():
-		while power_dict[key] < 0.0:
-			var prov = get_largest_key(power_dict)
-			if power_dict[prov] <= 0: 
-				print("Power_deficit")
-				return
-			var amount = min(-power_dict[key], power_dict[prov])
-			power_dict[key] = power_dict[key] + amount
-			power_dict[prov] = power_dict[prov] - amount
-			_draw_power_path(bfs.nodes.find(prov), bfs.nodes.find(key))
-			#print(bfs.nodes.find(key))
+	_clear_power_paths()
+	for building in buildings:
+		var excluded_providers: Array[Building] = []
+		while building.power_state == building.PowerStates.DEFICIT:
+			if excluded_providers.size() > 1: break
+			var provider = get_best_provider(building, excluded_providers)
+			if not provider: break
+			excluded_providers.append(provider)
+			building.current_power += provider.send_power(building, building.power_delta + 1.0)
+			_draw_power_path(buildings.find(building), buildings.find(provider))
+
+func get_best_provider(agent: Building, exclusion_list: Array[Building]) -> Building:
+	var best_provider: Building = null
+	var best_cost: float = INF
+	for building in buildings:
+		if building == agent: continue
+		if building in exclusion_list: continue
+		if building.power_state != building.PowerStates.EXCESS: continue
+		var cost: float = 0.0
+		cost += building.position.distance_to(agent.position) / 100
+		cost -= building.power_excess / 100
+		if cost < best_cost:
+			best_cost = cost
+			best_provider = building
+	return best_provider
+
+func get_cost_array(agent: Building, has_excess: Array) -> Array:
+	var cost_arr: Array = []
+	for building in has_excess:
+		var cost: float = 0.0
+		cost += agent.global_position.distance_to(building.global_position) / 50.0
+		cost -= building.battery_percentage - building.power_share_treshold
+		
+		cost_arr.append(cost)
+	return cost_arr
+
+func _get_lowest_idx(arr: Array) -> int:
+	if len(arr) == 0: return -1
+	var lowest_idx: int = 0
+	var lowest_amount: float = arr[0]
+	for i in range(1, len(arr)):
+		if arr[i] < lowest_amount:
+			lowest_amount = arr[i]
+			lowest_idx = i
+	return lowest_idx
 
 
 
 
-
-func balance_grid_by_consumption() -> void:
-	var iteration: int = 0
-	while not is_grid_balanced():
-		if iteration > power_dict.size() * 3:
-			print(power_dict)
-			break
-		else:
-			iteration += 1
-		var req = get_smallest_key(power_dict)
-		var prov = get_largest_key(power_dict)
-		if power_dict[prov] <= 0: 
-			print("Power_deficit: ", get_grid_balance())
-			break
-		var amount = min(-power_dict[req], power_dict[prov])
-		power_dict[req] = power_dict[req] + amount
-		power_dict[prov] = power_dict[prov] - amount
-		req.external_power += amount
-		prov.external_power -= amount
-		_draw_power_path(bfs.nodes.find(prov), bfs.nodes.find(req))
-	
-
-
-
-
-
+func add_to_power_tracker(agent) -> void:
+	buildings.append(agent)
 
 func _draw_power_path(start: int, goal: int) -> void:
 	var path = bfs.search(start, goal)
@@ -116,24 +126,3 @@ func get_smallest_key(dict: Dictionary) -> Variant:
 			smalllest_key = key
 	if not smalllest_key: return dict.keys()[0]
 	return smalllest_key
-
-func is_grid_balanced() -> bool:
-	var num_pos: int = 0
-	var num_neg: int = 0
-	for key in power_dict.keys():
-		if power_dict[key] > 0:
-			num_pos += 1
-		elif power_dict[key] < 0:
-			num_neg += 1
-	#print(num_pos," ",num_neg)
-	if num_pos == 0 or num_neg == 0:
-		return true
-	return false
-
-
-
-func get_grid_balance() -> float:
-	var balance: float = 0.0
-	for key in power_dict.keys():
-		balance += power_dict[key]
-	return balance
