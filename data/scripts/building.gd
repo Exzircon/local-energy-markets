@@ -9,12 +9,17 @@ class_name Building
 @export var num_solar_panels: int = 0
 var power_delta: float:
 	get():
-		return generation - consumption
+		var external: float = 0
+		for agent in sending_to:
+			external -= agent.consumption - agent.generation
+		for agent in recieving_from:
+			external += consumption - generation
+		return generation - consumption + external
 
 #TODO: Add Battery functionality to houses
-@export var capacity_MWh: float = 100.0
+@export var capacity_MWh: float = 200.0
 var capacity: float = capacity_MWh * Engine.physics_ticks_per_second
-var current_power: float = 0.0
+var current_power: float = capacity * 0.8
 var battery_percentage: float:
 	get():
 		return current_power / capacity
@@ -26,20 +31,18 @@ var battery_percentage: float:
 var power_excess: float:
 	get():
 		return current_power - capacity * power_share_treshold
-var power_state: PowerStates:
-	get():
-		if battery_percentage > power_share_treshold: return PowerStates.EXCESS
-		elif battery_percentage < power_deficit_treshold: return PowerStates.DEFICIT
-		return PowerStates.BALANCED
-var max_shares: int = 2
-var current_shares: Array[Building] = []
-enum PowerStates {DEFICIT, BALANCED, EXCESS}
+@onready var provide_sprite: Sprite2D = $ProvideSprite
+
 
 
 @export_group("Misc")
 @export var randomize_consumption: bool = true
 
-var external_power: float = 0.0
+#var external_power: float = 0.0
+var sending_to: Array[Building] = []
+var recieving_from: Array[Building] = []
+
+
 
 var satisfaction: float:
 	get():
@@ -61,39 +64,48 @@ var satisfaction: float:
 @onready var collision_shape_2d: CollisionShape2D = $HoverArea/CollisionShape2D
 #endregion
 
+var new_reciever_this_frame: bool = false
+
+
 func _init() -> void:
 	num_solar_panels = randi_range(0, 4)
 
 func _ready() -> void:
-	PowerManager.add_to_power_tracker(self)
+	PowerManager.buildings.append(self)
 	#battery_sprite.hide()
 	name_label.text = name
 	hover_area.connect("mouse_entered", mouse_entered)
 	hover_area.connect("mouse_exited", mouse_exited)
 
-@warning_ignore("unused_parameter")
+
 func _physics_process(delta: float) -> void:
 	current_power = clampf(current_power + power_delta, 0, capacity)
-	current_shares = []
+	if current_power < capacity * power_deficit_treshold:
+		PowerManager.request_power(self)
+		
+	if current_power < capacity * power_share_treshold and not new_reciever_this_frame:
+		for reciever in sending_to:
+			PowerManager.break_connection(reciever, self, "Not enough excess power | " + str(new_reciever_this_frame))
+	new_reciever_this_frame = false
+	
+	_update_provide_sprite()
 	
 	_update_color(self, satisfaction)
 	_update_color(battery_sprite, battery_percentage*2)
 	_update_labels()
 
-
-
 func _update_labels() -> void:
-	consumption_label.text = "Con: " + str("%0.2f" % consumption)
-	production_label.text = "Prod: " + str("%0.2f" % generation)
+	consumption_label.text = str("%0.2f" % generation) + " / " + str("%0.2f" % consumption)
+	production_label.text = "Delta: " + str("%0.2f" % power_delta)
 	external_power_label.text = "Battery: " + str("%0.2f" % current_power) + "MW"
 
 func mouse_entered() -> void:
 	panel_container.show()
-	battery_sprite.show()
+	#battery_sprite.show()
 
 func mouse_exited() -> void:
 	panel_container.hide()
-	battery_sprite.hide()
+	#battery_sprite.hide()
 
 func _update_color(agent: Node2D, percent: float) -> void:
 	if satisfaction > 1.0:
@@ -101,17 +113,34 @@ func _update_color(agent: Node2D, percent: float) -> void:
 	else:
 		agent.self_modulate = low_color.lerp(mid_color, percent)
 
-func _update_color_old() -> void:
-	if satisfaction > 1.0:
-		self_modulate = mid_color.lerp(high_color, satisfaction - 1.0)
-	else:
-		self_modulate = low_color.lerp(mid_color, satisfaction)
+func remove_connection(agent: Building) -> void:
+	if agent in sending_to:
+		var idx = sending_to.find(agent)
+		sending_to.remove_at(idx)
+	if agent in recieving_from:
+		var idx = recieving_from.find(agent)
+		recieving_from.remove_at(idx)
 
-func send_power(where: Building, amount: float) -> float:
-	if current_shares.size() > max_shares: return 0
-	current_shares.append(where)
-	if power_excess < amount:
-		current_power -= power_excess
-		return power_excess
-	current_power -= amount
-	return amount
+
+func willing_to_provide_power(agent: Building, r_percent: float = 1.0) -> bool:
+	if len(recieving_from) > 0: return false
+	if len(sending_to) >= 3: return false
+	var target: float = (consumption - agent.power_delta * r_percent) * 10 
+	for reciever in sending_to:
+		target += reciever.power_delta * 10
+	if current_power - capacity * power_share_treshold < target: return false
+	new_reciever_this_frame = true
+	return true
+
+func _update_provide_sprite() -> void:
+	
+	if current_power - capacity * power_share_treshold > 0:
+		provide_sprite.self_modulate = Color.GREEN
+	elif current_power - capacity * power_deficit_treshold >= -0.5 :
+		provide_sprite.self_modulate = Color.YELLOW
+	else:
+		provide_sprite.self_modulate = Color.RED
+	
+	
+	
+	

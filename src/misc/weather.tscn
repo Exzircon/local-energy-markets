@@ -8,4 +8,5 @@ point_count = 4
 
 [node name="Weather" type="Node"]
 script = ExtResource("1_fd32c")
+day_length = 24.0
 sun_curve = SubResource("Curve_fd32c")

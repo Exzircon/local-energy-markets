@@ -1,7 +1,7 @@
 extends Sprite2D
 class_name Map
 
-var bfs = BreadthFirstSearch.new()
+#var bfs = BreadthFirstSearch.new()
 
 
 #TEST: PARTICLEPATH TEST
@@ -9,12 +9,15 @@ var particle_paths: Array[ParticlePath2D] = []
 
 
 func _init() -> void:
-	PowerManager.bfs = bfs
+	#PowerManager.bfs = bfs
 	PowerManager.map = self
 
+
+'''
 func _ready() -> void:
-	bfs.set_nodes(get_children())
+	#bfs.set_nodes(get_children())
 	#test(0, 28)
+	pass
 
 @warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
@@ -41,3 +44,4 @@ func _rand_highlight() -> void:
 		b = randi_range(0, bfs.nodes.size() - 1)
 	var path = bfs.search(a, b)
 	bfs.highlight_path(path)
+'''

@@ -10,81 +10,17 @@ var bfs: BreadthFirstSearch #TODO: OLD
 var map: Map #TODO: OLD
 #var ts: TransportationSolver = TransportationSolver.new()
 
+var connections: Array = []
+
+#Signals
+@warning_ignore("unused_signal")
+#signal request_power(agent: Building, amount: float)
+#signal request_provider(agent: Building, amount: float)
+#signal selected_provider(agent: Building, amount: float)
+
+
 func _ready() -> void:
-	print(buildings)
-	#ts.solve()
-
-func _physics_process(delta: float) -> void:
-	#distribute_power()
-	balance_grid()
-
-func distribute_power() -> void:
-	var has_excess: Array[Building] = []
-	var has_deficit: Array[Building] = []
-	for building in buildings:
-		#print(building.battery_percentage)
-		if building.power_state == building.PowerStates.EXCESS:
-			has_excess.append(building)
-		elif building.power_state == building.PowerStates.DEFICIT:
-			has_deficit.append(building)
-	for building in has_deficit:
-		var cost_arr: Array = get_cost_array(building, has_excess)
-		var cheapest_idx: int = _get_lowest_idx(cost_arr)
-		var provider = has_excess[cheapest_idx]
-		building.current_power += provider.send_power(building, building.power_delta)
-
-func balance_grid() -> void:
-	_clear_power_paths()
-	for building in buildings:
-		var excluded_providers: Array[Building] = []
-		while building.power_state == building.PowerStates.DEFICIT:
-			if excluded_providers.size() > 1: break
-			var provider = get_best_provider(building, excluded_providers)
-			if not provider: break
-			excluded_providers.append(provider)
-			building.current_power += provider.send_power(building, building.power_delta + 1.0)
-			_draw_power_path(buildings.find(building), buildings.find(provider))
-
-func get_best_provider(agent: Building, exclusion_list: Array[Building]) -> Building:
-	var best_provider: Building = null
-	var best_cost: float = INF
-	for building in buildings:
-		if building == agent: continue
-		if building in exclusion_list: continue
-		if building.power_state != building.PowerStates.EXCESS: continue
-		var cost: float = 0.0
-		cost += building.position.distance_to(agent.position) / 100
-		cost -= building.power_excess / 100
-		if cost < best_cost:
-			best_cost = cost
-			best_provider = building
-	return best_provider
-
-func get_cost_array(agent: Building, has_excess: Array) -> Array:
-	var cost_arr: Array = []
-	for building in has_excess:
-		var cost: float = 0.0
-		cost += agent.global_position.distance_to(building.global_position) / 50.0
-		cost -= building.battery_percentage - building.power_share_treshold
-		
-		cost_arr.append(cost)
-	return cost_arr
-
-func _get_lowest_idx(arr: Array) -> int:
-	if len(arr) == 0: return -1
-	var lowest_idx: int = 0
-	var lowest_amount: float = arr[0]
-	for i in range(1, len(arr)):
-		if arr[i] < lowest_amount:
-			lowest_amount = arr[i]
-			lowest_idx = i
-	return lowest_idx
-
-
-
-
-func add_to_power_tracker(agent) -> void:
-	buildings.append(agent)
+	pass
 
 func _draw_power_path(start: int, goal: int) -> void:
 	var path = bfs.search(start, goal)
@@ -103,26 +39,92 @@ func _clear_power_paths() -> void:
 		p_path.queue_free()
 	particle_paths = []
 
-func get_largest_key(dict: Dictionary) -> Variant:
-	var largest_key
-	var largest_amount: float = 0.0
-	for key in dict.keys():
-		#print("-------------------------------------------------------")
-		#print(key)
-		if dict[key] > largest_amount:
-			largest_amount = dict[key]
-			largest_key = key
-	if not largest_key: return dict.keys()[0]
-	return largest_key
 
-func get_smallest_key(dict: Dictionary) -> Variant:
-	var smalllest_key
-	var smalllest_amount: float = 0.0
-	for key in dict.keys():
-		#print("-------------------------------------------------------")
-		#print(key)
-		if dict[key] < smalllest_amount:
-			smalllest_amount = dict[key]
-			smalllest_key = key
-	if not smalllest_key: return dict.keys()[0]
-	return smalllest_key
+
+func request_power(agent: Building, depth: int = 1) -> void:
+	if depth > 4: return
+	var possible_providers: Array = []
+	for building in buildings:
+		if building == agent: continue
+		if building in agent.recieving_from: continue
+		if building.willing_to_provide_power(agent, 1.0 / depth):
+			possible_providers.append(building)
+	if len(possible_providers) < depth:
+		request_power(agent, depth + 1)
+	else:
+		for i in range(depth):
+			create_connection(possible_providers[i], agent)
+
+func create_connection(provider: Building, requester: Building) -> void:
+	var power_path: ParticlePath2D = ParticlePath2D.new()
+	power_path.top_level = true
+	power_path.z_index = -1
+	power_path.curve = Curve2D.new()
+	power_path.curve.add_point(provider.global_position)
+	power_path.curve.add_point(requester.global_position)
+	provider.add_child(power_path)
+	
+	var connection: Array = [provider, requester, power_path]
+	provider.sending_to.append(requester)
+	requester.recieving_from.append(provider)
+	connections.append(connection)
+
+func break_connection(reciever: Building, provider: Building, reason: String = " - ") -> void:
+	print()
+	print("Rec: ", reciever, " | Pro: ", provider, " | Reason: ", reason)
+	for connection in connections:
+		print(connection)
+	for i in range(len(connections)):
+		if not connections[i]: print("WAH!")
+		var connection = connections[i]
+		if not reciever in connection or not provider in connection: continue
+		connections[i][2].queue_free()
+		reciever.remove_connection(provider)
+		provider.remove_connection(reciever)
+		connections.remove_at(i)
+		break
+
+
+func create_connection_old(provider: Building, requester: Building, amount: float) -> void:
+	var power_path: ParticlePath2D = ParticlePath2D.new()
+	power_path.top_level = true
+	power_path.z_index = -1
+	power_path.curve = Curve2D.new()
+	power_path.curve.add_point(provider.global_position)
+	power_path.curve.add_point(requester.global_position)
+	provider.add_child(power_path)
+	
+	var connection: Array = [provider, requester, amount, power_path]
+	provider.external_connections.append([requester, -amount])
+	requester.external_connections.append([provider, amount])
+	connections.append(connection)
+
+func break_all_connections(agent: Building) -> void:
+	var idx_to_remove: Array[int] = []
+	for i in range(len(connections)):
+		var connection: Array = connections[i]
+		if agent in connection:
+			connection[0].remove_connection(connection[1])
+			connection[1].remove_connection(connection[0])
+			connection[2].queue_free()
+			idx_to_remove.append(i)
+	idx_to_remove.reverse()
+	for idx in idx_to_remove:
+		connections.remove_at(idx)
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEvent:
+		if event.is_action_pressed("ui_accept"):
+			print()
+			var total_consumption: float = 0
+			var max_possible_production: float = 0
+			for building in buildings:
+				total_consumption += building.consumption
+				max_possible_production += building.num_solar_panels * 5.0
+			print("Total Consumption: ", total_consumption)
+			print("Max Production: ", max_possible_production)
+
+
+
+
+ 
