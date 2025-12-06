@@ -1,4 +1,7 @@
 extends Node
+##Depriceted
+
+
 
 signal Tick()
 signal Pre_Tick()

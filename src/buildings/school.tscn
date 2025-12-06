@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://7fjokfora8dw"]
+[gd_scene load_steps=7 format=3 uid="uid://7fjokfora8dw"]
 
 [ext_resource type="Texture2D" uid="uid://gt2dnsu7de8e" path="res://assets/icons/House.png" id="1_l0iij"]
 [ext_resource type="Script" uid="uid://cqva4h5a1klyy" path="res://data/scripts/building.gd" id="2_r2w1k"]
-[ext_resource type="Script" uid="uid://bqsu12j0cjd1a" path="res://data/scripts/building_container.gd" id="3_1jn54"]
 [ext_resource type="LabelSettings" uid="uid://ddfnr4u2d2qog" path="res://assets/resources/school_labels.tres" id="3_3lrkn"]
 [ext_resource type="Texture2D" uid="uid://toae8521legu" path="res://assets/icons/battery_clean.png" id="5_2xjha"]
 [ext_resource type="Texture2D" uid="uid://bt1s31g1amsnf" path="res://assets/icons/Circle.png" id="6_ff5m3"]
@@ -32,7 +31,6 @@ offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.3, 0.3)
-script = ExtResource("3_1jn54")
 
 [node name="ColorRect" type="ColorRect" parent="PanelContainer"]
 show_behind_parent = true

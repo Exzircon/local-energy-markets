@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://m3khsqv826yq" path="res://data/global/weather.gd" id="1_fd32c"]
 
 [sub_resource type="Curve" id="Curve_fd32c"]
-_data = [Vector2(0.15801886, 0), 0.0, 0.0, 0, 0, Vector2(0.3601752, 0.83503175), 1.4237666, 1.4237666, 0, 0, Vector2(0.6971024, 0.8850221), -1.3188577, -1.3188577, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_limits = [0.0, 1.0, 0.0, 24.0]
+_data = [Vector2(0.15801886, 0), 0.0, 0.0, 0, 0, Vector2(4.91372, 0.10101235), 0.022762613, 0.022762613, 0, 0, Vector2(10.34512, 0.93994987), 0.0, 0.0, 0, 0, Vector2(14.8429985, 0.9752736), -0.02994826, -0.02994826, 0, 0, Vector2(24, 0), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [node name="Weather" type="Node"]
 script = ExtResource("1_fd32c")
-day_length = 24.0
 sun_curve = SubResource("Curve_fd32c")

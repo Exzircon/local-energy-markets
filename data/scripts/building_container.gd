@@ -1,5 +1,7 @@
 extends PanelContainer
 
+var mouse_inside: bool = false
+
 
 func _init() -> void:
 	mouse_entered.connect(entered)
@@ -7,8 +9,15 @@ func _init() -> void:
 	hide()
 
 func entered() -> void:
-	show()
+	#show()
+	mouse_inside = true
 
 
 func exited() -> void:
-	hide()
+	#hide()
+	mouse_inside = false
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == 1 and mouse_inside:
+			SignalBus.emit_signal("display_stats", get_parent())

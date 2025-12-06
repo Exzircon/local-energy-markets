@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://8u3x0rqe0fab"]
+
+[ext_resource type="Script" uid="uid://b42amios56fd7" path="res://data/scripts/curve_visualiser.gd" id="1_osrl3"]
+
+[node name="CurveVisualiser" type="Line2D"]
+width = 1.5
+script = ExtResource("1_osrl3")
