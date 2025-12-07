@@ -3,13 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://gt2dnsu7de8e" path="res://assets/icons/House.png" id="1_l0iij"]
 [ext_resource type="Script" uid="uid://cqva4h5a1klyy" path="res://data/scripts/building.gd" id="2_r2w1k"]
 [ext_resource type="LabelSettings" uid="uid://ddfnr4u2d2qog" path="res://assets/resources/school_labels.tres" id="3_3lrkn"]
-[ext_resource type="Texture2D" uid="uid://toae8521legu" path="res://assets/icons/battery_clean.png" id="5_2xjha"]
+[ext_resource type="Texture2D" uid="uid://ncxyy2r8mbqx" path="res://assets/icons/battery.png" id="4_2xjha"]
 [ext_resource type="Texture2D" uid="uid://bt1s31g1amsnf" path="res://assets/icons/Circle.png" id="6_ff5m3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1jn54"]
 radius = 13.333333
 
-[node name="School" type="Sprite2D" groups=["buildings"]]
+[node name="Building" type="Sprite2D" groups=["buildings"]]
 z_index = 10
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_l0iij")
@@ -76,7 +76,7 @@ shape = SubResource("CircleShape2D_1jn54")
 [node name="BatterySprite" type="Sprite2D" parent="."]
 position = Vector2(-11.428572, 11.428572)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_2xjha")
+texture = ExtResource("4_2xjha")
 
 [node name="ProvideSprite" type="Sprite2D" parent="."]
 position = Vector2(-5.714286, 17.142857)

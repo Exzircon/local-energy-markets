@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4cjo0p0yq6nr"
-path="res://.godot/imported/lightning.svg-2ef7be7097b4815dddf02897aad6f713.ctex"
+uid="uid://b5gy1h6wrdp6q"
+path="res://.godot/imported/Sun.png-d14f9e0bb2f062078d149944aa3df1fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/lightning.svg"
-dest_files=["res://.godot/imported/lightning.svg-2ef7be7097b4815dddf02897aad6f713.ctex"]
+source_file="res://assets/icons/Sun.png"
+dest_files=["res://.godot/imported/Sun.png-d14f9e0bb2f062078d149944aa3df1fe.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=0.1
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

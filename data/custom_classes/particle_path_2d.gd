@@ -4,7 +4,7 @@ class_name ParticlePath2D
 @export_category("ParticlePath2D")
 @export var speed: float = 75.0
 @export var count: int = 5
-@export var texture: Texture2D = preload("res://assets/icons/lightning.svg")
+@export var texture: Texture2D = preload("res://assets/icons/Energy.png")
 @export var texture_scale: float = 0.1
 @export var texture_spacing: float = 10.0
 

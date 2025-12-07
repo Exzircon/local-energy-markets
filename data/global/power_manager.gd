@@ -8,6 +8,7 @@ var buildings: Array = []
 var map: Map
 
 ##Array of all connections between buildings
+### [provider, requester, power_path]
 var connections: Array = []
 
 ## Function called by a building to request power
