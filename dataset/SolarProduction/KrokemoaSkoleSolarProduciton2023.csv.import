@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://e6qr42fl6snw"
+
+[deps]
+
+source_file="res://dataset/SolarProduction/KrokemoaSkoleSolarProduciton2023.csv"
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

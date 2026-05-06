@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cip2re5caxw1c"]
+[gd_scene format=3 uid="uid://bgrtjxr40giji"]
 
 [ext_resource type="Script" uid="uid://m3khsqv826yq" path="res://data/global/weather.gd" id="1_fd32c"]
 
@@ -7,6 +7,6 @@ _limits = [0.0, 1.0, 0.0, 24.0]
 _data = [Vector2(0.15801886, 0), 0.0, 0.0, 0, 0, Vector2(4.91372, 0.10101235), 0.022762613, 0.022762613, 0, 0, Vector2(10.34512, 0.93994987), 0.0, 0.0, 0, 0, Vector2(14.8429985, 0.9752736), -0.02994826, -0.02994826, 0, 0, Vector2(24, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[node name="Weather" type="Node"]
+[node name="Weather" type="Node" unique_id=455501490]
 script = ExtResource("1_fd32c")
 sun_curve = SubResource("Curve_fd32c")

@@ -14,12 +14,28 @@ var current_efficiency: float = 1.0
 ## The current time, 
 var current_time: float = 0.0
 
-func _physics_process(delta: float) -> void:
-	update_time(delta)
-	current_efficiency = 1.0 * sun_curve.sample(current_time)
+func _ready() -> void:
+	TickEngine.tick.connect(tick)
+	#print("Physics: ", Engine.physics_ticks_per_second)
 
+func tick(stage: Enums.TickStage) -> void:
+	match stage:
+		Enums.TickStage.ENVIROMENT:
+			update_time()
 
-## Function for updating the current time of day
-func update_time(delta: float) -> void:
-	current_time += delta / day_length * sun_curve.max_domain
-	if current_time > sun_curve.max_domain: current_time = 0.0
+func update_time() -> void:
+	current_time += 1.0 / Engine.physics_ticks_per_second
+	if current_time > day_length:
+		current_time = 0.0
+	current_efficiency = sun_curve.sample(current_time)
+	#print("Time:", current_time, " --- Efficiency: ", current_efficiency)
+
+func predict_efficiency(ticks: int) -> float:
+	var total_eff: float = 0.0
+	var predict_time: float = current_time
+	for i in range(ticks):
+		predict_time += 1.0 / Engine.physics_ticks_per_second
+		if predict_time > day_length:
+			predict_time = 0.0
+		total_eff += sun_curve.sample(predict_time)
+	return total_eff

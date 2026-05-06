@@ -18,10 +18,10 @@ func _init() -> void:
 func _physics_process(_delta: float) -> void:
 	if not building: return
 	consumption_label.text = "Consumption: " + str("%0.2f" % building.consumption)
-	production_label.text = "Production: " + str("%0.2f" % building.generation)
-	battery_label.text = str("%0.2f" % building.current_power) + " | " + str("%0.2f" % building.capacity)
-	battery_bar.value = building.battery_percentage * 100
-	_update_progress_bar_color(building.battery_percentage)
+	production_label.text = "Production: " + str("%0.2f" % building.production)
+	battery_label.text = str("%0.2f" % building.power) + " | " + str("%0.2f" % building.capacity)
+	battery_bar.value = building.power / building.capacity * 100
+	_update_progress_bar_color(building.power / building.capacity * 100)
 
 
 func display_stats(agent: Building) -> void:

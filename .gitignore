@@ -1,3 +1,5 @@
-.godot
-dataset/*
-
+# Godot 4+ specific ignores
+.godot/
+/android/
+TODO.md
+dataset/SandefjordEnergiConsumption*

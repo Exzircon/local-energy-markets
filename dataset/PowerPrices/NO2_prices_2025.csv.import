@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://gfp5mt1xqvit"
+
+[deps]
+
+source_file="res://dataset/PowerPrices/NO2_prices_2025.csv"
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
