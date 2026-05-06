@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cltvoux6mcwpj"]
+
+[ext_resource type="LabelSettings" uid="uid://cta72r6qnlkx7" path="res://assets/resources/school_labels.tres" id="1_780dl"]
+[ext_resource type="Texture2D" uid="uid://gt2dnsu7de8e" path="res://assets/icons/House.png" id="1_yyuy6"]
+[ext_resource type="Script" uid="uid://bayvr7akdhdjw" path="res://data/scripts/building.gd" id="2_nng3d"]
+[ext_resource type="Texture2D" uid="uid://ncxyy2r8mbqx" path="res://assets/icons/battery.png" id="2_yyuy6"]
+[ext_resource type="Texture2D" uid="uid://bt1s31g1amsnf" path="res://assets/icons/Circle.png" id="3_nng3d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ghry"]
+radius = 13.333333
+
+[node name="Building" type="Sprite2D" unique_id=517736859 groups=["buildings"]]
+texture = ExtResource("1_yyuy6")
+script = ExtResource("2_nng3d")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1739223668]
+z_index = 100
+z_as_relative = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.0
+offset_top = -124.0
+offset_right = 189.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer" unique_id=795620723]
+show_behind_parent = true
+custom_minimum_size = Vector2(5.395, 23.99)
+layout_mode = 2
+size_flags_vertical = 3
+localize_numeral_system = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1724656615]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1061827708]
+layout_mode = 2
+text = "Name: School"
+label_settings = ExtResource("1_780dl")
+horizontal_alignment = 1
+
+[node name="ConsumptionLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1941690821]
+layout_mode = 2
+text = "Con: 193 MWH"
+label_settings = ExtResource("1_780dl")
+horizontal_alignment = 1
+
+[node name="ProductionLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1617803230]
+layout_mode = 2
+text = "Prod: 237 MWH"
+label_settings = ExtResource("1_780dl")
+horizontal_alignment = 1
+
+[node name="ExternalPowerLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1039331392]
+layout_mode = 2
+text = "Prod: 237 MWH"
+label_settings = ExtResource("1_780dl")
+horizontal_alignment = 1
+
+[node name="ContractsLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=47525256]
+layout_mode = 2
+text = "Cont: 0"
+label_settings = ExtResource("1_780dl")
+horizontal_alignment = 1
+
+[node name="HoverArea" type="Area2D" parent="." unique_id=337279743]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea" unique_id=951614586]
+position = Vector2(0, 1.6666666)
+shape = SubResource("CircleShape2D_1ghry")
+
+[node name="BatterySprite" type="Sprite2D" parent="." unique_id=1094102134]
+position = Vector2(-8.999999, 10)
+scale = Vector2(0.36160713, 0.36160713)
+texture = ExtResource("2_yyuy6")
+
+[node name="ProvideSprite" type="Sprite2D" parent="." unique_id=349491372]
+position = Vector2(-7, 14.000002)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_nng3d")

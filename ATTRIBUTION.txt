@@ -1,0 +1,9 @@
+power prices NO2 2025 was collected from https://transparency.entsoe.eu/market/energyPrices?permalink=69ef4592bf132d2aaeeb053a under the Creative Commons Attribution 4.0 International License
+
+EUR NOK Exchange rate 2025 was collected from https://www.norges-bank.no/en/topics/Statistics/exchange_rates/?tab=currency&id=EUR
+
+These two were used to process and make a singe .csv datafile containing dates and prices in øre/Wh for NO2 from 01.01.2025 to 31.12.2025.
+
+Solar power generation was collected from https://re.jrc.ec.europa.eu/pvg_tools/en/tools.html, used the data for 2023 as this was the freshest data available at the time.
+
+kWp estimation used in the above tool was collected from https://www.solcellekraft.no/

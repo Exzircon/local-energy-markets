@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://drkkqwax7e1ja"]
+[gd_scene format=3 uid="uid://csoxgji6b6hwh"]
 
-[ext_resource type="Script" uid="uid://c3jjngmi21352" path="res://data/scripts/navigation_camera.gd" id="1_w2s8v"]
+[ext_resource type="Script" uid="uid://cb77v8mgn6p8p" path="res://data/scripts/navigation_camera.gd" id="1_w2s8v"]
 
-[node name="NavCamera" type="Camera2D"]
+[node name="NavCamera" type="Camera2D" unique_id=1132987671]
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("1_w2s8v")

@@ -1,0 +1,10 @@
+extends Node
+
+enum TickStage{
+		ENVIROMENT,
+		INTERNAL_POWER,
+		TRADE_POWER,
+		DEFICIT_POWER,
+		EXCESS_POWER,
+		STATISTICS
+	}

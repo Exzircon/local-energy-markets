@@ -1,21 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://7fjokfora8dw"]
+[gd_scene format=3 uid="uid://chtmgh3ie82gh"]
 
 [ext_resource type="Texture2D" uid="uid://gt2dnsu7de8e" path="res://assets/icons/House.png" id="1_l0iij"]
-[ext_resource type="Script" uid="uid://cqva4h5a1klyy" path="res://data/scripts/building.gd" id="2_r2w1k"]
-[ext_resource type="LabelSettings" uid="uid://ddfnr4u2d2qog" path="res://assets/resources/school_labels.tres" id="3_3lrkn"]
+[ext_resource type="Script" uid="uid://bayvr7akdhdjw" path="res://data/scripts/building.gd" id="2_r2w1k"]
+[ext_resource type="LabelSettings" uid="uid://cta72r6qnlkx7" path="res://assets/resources/school_labels.tres" id="3_3lrkn"]
 [ext_resource type="Texture2D" uid="uid://ncxyy2r8mbqx" path="res://assets/icons/battery.png" id="4_2xjha"]
 [ext_resource type="Texture2D" uid="uid://bt1s31g1amsnf" path="res://assets/icons/Circle.png" id="6_ff5m3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1jn54"]
 radius = 13.333333
 
-[node name="Building" type="Sprite2D" groups=["buildings"]]
+[node name="Building" type="Sprite2D" unique_id=2080226173 groups=["buildings"]]
 z_index = 10
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_l0iij")
 script = ExtResource("2_r2w1k")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=874223071]
 visible = false
 z_index = 100
 z_as_relative = false
@@ -32,53 +32,53 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.3, 0.3)
 
-[node name="ColorRect" type="ColorRect" parent="PanelContainer"]
+[node name="ColorRect" type="ColorRect" parent="PanelContainer" unique_id=332828556]
 show_behind_parent = true
 custom_minimum_size = Vector2(5.395, 23.99)
 layout_mode = 2
 size_flags_vertical = 3
 localize_numeral_system = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1608324532]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NameLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1938464718]
 layout_mode = 2
 text = "Name: School"
 label_settings = ExtResource("3_3lrkn")
 horizontal_alignment = 1
 
-[node name="ConsumptionLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="ConsumptionLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1253393612]
 layout_mode = 2
 text = "Con: 193 MWH"
 label_settings = ExtResource("3_3lrkn")
 horizontal_alignment = 1
 
-[node name="ProductionLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="ProductionLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1750307930]
 layout_mode = 2
 text = "Prod: 237 MWH"
 label_settings = ExtResource("3_3lrkn")
 horizontal_alignment = 1
 
-[node name="ExternalPowerLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="ExternalPowerLabel" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1636028610]
 layout_mode = 2
 text = "Prod: 237 MWH"
 label_settings = ExtResource("3_3lrkn")
 horizontal_alignment = 1
 
-[node name="HoverArea" type="Area2D" parent="."]
+[node name="HoverArea" type="Area2D" parent="." unique_id=1502794911]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoverArea" unique_id=929729381]
 position = Vector2(0, 1.6666666)
 shape = SubResource("CircleShape2D_1jn54")
 
-[node name="BatterySprite" type="Sprite2D" parent="."]
+[node name="BatterySprite" type="Sprite2D" parent="." unique_id=962517869]
 position = Vector2(-11.428572, 11.428572)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_2xjha")
 
-[node name="ProvideSprite" type="Sprite2D" parent="."]
+[node name="ProvideSprite" type="Sprite2D" parent="." unique_id=700900694]
 position = Vector2(-5.714286, 17.142857)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_ff5m3")

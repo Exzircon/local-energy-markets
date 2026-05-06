@@ -1,6 +1,5 @@
 extends Camera2D
 
-
 @export_category("Camera Movement")
 @export var speed: float = 400.0
 var direction: Vector2 = Vector2.ZERO
@@ -10,7 +9,7 @@ var target_zoom: Vector2 = Vector2.ONE
 var target_scale: Vector2 = Vector2.ONE
 var zoom_smoothing: float = 0.135
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	var move_x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var move_y = Input.get_action_strength("down") - Input.get_action_strength("up")
 	direction = Vector2(move_x, move_y)

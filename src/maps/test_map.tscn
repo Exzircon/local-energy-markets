@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dr1aica3fyifs"]
+
+[ext_resource type="Texture2D" uid="uid://fdbap6dav8qn" path="res://assets/maps/SandefjordKartInfill.png" id="1_cx201"]
+[ext_resource type="PackedScene" uid="uid://cltvoux6mcwpj" path="res://src/buildings/building.tscn" id="2_qrlkj"]
+
+[node name="TestMap" type="Node2D" unique_id=1297271289]
+
+[node name="MapSprite2D" type="Sprite2D" parent="." unique_id=667392832]
+self_modulate = Color(0.38463646, 0.5671489, 0.44195622, 1)
+texture = ExtResource("1_cx201")
+
+[node name="Krokemoa Skole" parent="." unique_id=517736859 instance=ExtResource("2_qrlkj")]
+position = Vector2(28, 202)
+consumption_csv = "uid://b7uh3hctnu0fl"
+consumption_column_index = 1
+production_csv = "uid://e6qr42fl6snw"
+production_column_index = 1

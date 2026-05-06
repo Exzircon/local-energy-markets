@@ -18,10 +18,11 @@ var low_color: Color = Color.RED
 var mid_color: Color = Color.YELLOW
 var high_color: Color = Color.GREEN
 
-var current_time: float = 0.0
 
-func _physics_process(_delta: float) -> void:
-	current_time += _delta
+func _ready() -> void:
+	TickEngine.tick_enviroment.connect(update)
+
+func update() -> void:
 	calculate_total_stats()
 	consumption_label.text = "Consumption: " + str("%0.2f" % total_consumption)
 	production_label.text = "Production: " + str("%0.2f" % total_generation)
@@ -29,7 +30,7 @@ func _physics_process(_delta: float) -> void:
 	battery_label.text = str("%0.2f" % total_power) + " | " + str("%0.2f" % total_battery_capacity)
 	battery_bar.value = total_battery_percent * 100
 	_update_progress_bar_color(total_battery_percent)
-	time_label.text = "Time: " + str("%0.2f" % current_time) + " hours"
+	time_label.text = "Time: " + str("%0.2f" % Stats.time) + " hours"
 
 
 func calculate_total_stats() -> void:
@@ -39,7 +40,9 @@ func calculate_total_stats() -> void:
 	total_battery_capacity = 0.0
 	total_battery_percent = 0.0
 	total_power = 0.0
-	for building in PowerManager.buildings:
+	var buildings = get_tree().get_nodes_in_group("buildings")
+	for building in buildings:
+		continue
 		total_consumption += building.consumption
 		total_generation += building.generation
 		total_delta += building.power_delta
