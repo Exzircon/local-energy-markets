@@ -1,0 +1,179 @@
+[gd_scene load_steps=9 format=3 uid="uid://dadr0rewhm5si"]
+
+[ext_resource type="Texture2D" uid="uid://b5gy1h6wrdp6q" path="res://assets/icons/Sun.png" id="1_q42p5"]
+[ext_resource type="Script" uid="uid://c38impyalaiyq" path="res://data/scripts/sun_texture.gd" id="2_cup3q"]
+[ext_resource type="Script" uid="uid://388semvupck2" path="res://data/scripts/total_stats_panel_container.gd" id="3_ewvcn"]
+[ext_resource type="Script" uid="uid://dbm6fqjejnawr" path="res://data/scripts/building_stats_display.gd" id="4_s0n7b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cfgd"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyndt"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.101960786, 0.101960786, 0.101960786, 0.6)
+corner_radius_top_right = 15
+corner_detail = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlaii"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.9372549, 1, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmhfv"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.101960786, 0.101960786, 0.101960786, 0.6)
+corner_radius_top_left = 15
+corner_detail = 3
+shadow_color = Color(0, 0, 0, 0)
+anti_aliasing = false
+anti_aliasing_size = 0.01
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftVBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SunPanelContainer" type="PanelContainer" parent="HBoxContainer/LeftVBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_3cfgd")
+
+[node name="SunTexture" type="TextureRect" parent="HBoxContainer/LeftVBoxContainer/SunPanelContainer"]
+layout_mode = 2
+texture = ExtResource("1_q42p5")
+script = ExtResource("2_cup3q")
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="TotalStatsPanelContainer" type="PanelContainer" parent="HBoxContainer/LeftVBoxContainer"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_fyndt")
+script = ExtResource("3_ewvcn")
+
+[node name="StatsVBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+text = "Statistics"
+
+[node name="ConsumptionLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+text = "Test Text"
+
+[node name="ProductionLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+text = "Test Text"
+
+[node name="PowerDeltaLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+text = "Test Text"
+
+[node name="BatteryLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="BatteryBar" type="ProgressBar" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_rlaii")
+
+[node name="TimeLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="RightVBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SunPanelContainer" type="PanelContainer" parent="HBoxContainer/RightVBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_3cfgd")
+
+[node name="SunTexture" type="TextureRect" parent="HBoxContainer/RightVBoxContainer/SunPanelContainer"]
+layout_mode = 2
+script = ExtResource("2_cup3q")
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="BuildingStatsPanelContainer" type="PanelContainer" parent="HBoxContainer/RightVBoxContainer"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_kmhfv")
+script = ExtResource("4_s0n7b")
+
+[node name="StatsVBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightVBoxContainer/BuildingStatsPanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/BuildingStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+text = "Click on a building"
+
+[node name="ProductionLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/BuildingStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+text = "to display its"
+
+[node name="ConsumptionLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/BuildingStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+text = "statistics"
+
+[node name="BatteryLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/BuildingStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="BatteryBar" type="ProgressBar" parent="HBoxContainer/RightVBoxContainer/BuildingStatsPanelContainer/StatsVBoxContainer"]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_rlaii")
