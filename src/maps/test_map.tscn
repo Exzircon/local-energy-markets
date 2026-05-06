@@ -11,7 +11,6 @@ texture = ExtResource("1_cx201")
 
 [node name="Krokemoa Skole" parent="." unique_id=517736859 instance=ExtResource("2_qrlkj")]
 position = Vector2(28, 202)
-consumption_csv = "uid://b7uh3hctnu0fl"
 consumption_column_index = 1
 production_csv = "uid://e6qr42fl6snw"
 production_column_index = 1
