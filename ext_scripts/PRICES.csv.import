@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bu81jybcanpre"
+
+[deps]
+
+files=["res://ext_scripts/PRICES.Area.translation", "res://ext_scripts/PRICES.Sequence.translation", "res://ext_scripts/PRICES.Day.translation", "res://ext_scripts/PRICES.en.translation", "res://ext_scripts/PRICES.en.translation"]
+
+source_file="res://ext_scripts/PRICES.csv"
+dest_files=["res://ext_scripts/PRICES.Area.translation", "res://ext_scripts/PRICES.Sequence.translation", "res://ext_scripts/PRICES.Day.translation", "res://ext_scripts/PRICES.en.translation", "res://ext_scripts/PRICES.en.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
