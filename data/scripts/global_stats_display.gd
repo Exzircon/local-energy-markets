@@ -1,16 +1,21 @@
 extends PanelContainer
-@onready var ptl_label: RichTextLabel = $StatsVBoxContainer/ptlLabel
-@onready var pfpc_label: RichTextLabel = $StatsVBoxContainer/pfpcLabel
-@onready var pll_label: RichTextLabel = $StatsVBoxContainer/pllLabel
-@onready var pstpc_label: RichTextLabel = $StatsVBoxContainer/pstpcLabel
-@onready var m_earned_label: RichTextLabel = $StatsVBoxContainer/mEarnedLabel
-@onready var m_saved_label: RichTextLabel = $StatsVBoxContainer/mSavedLabel
-@onready var m_spent_label: RichTextLabel = $StatsVBoxContainer/mSpentLabel
-@onready var c_spot_p_label: RichTextLabel = $StatsVBoxContainer/cSpotPLabel
-@onready var c_sell_p_label: RichTextLabel = $StatsVBoxContainer/cSellPLabel
+@onready var time_left_label: Label = $StatsVBoxContainer/TimeContainer/TimeLeftLabel
+@onready var time_right_label: Label = $StatsVBoxContainer/TimeContainer/TimeRightLabel
+@onready var power_consumed_right_label: Label = $StatsVBoxContainer/PowerConsumedContainer/PowerConsumedRightLabel
+@onready var power_produced_right_label: Label = $StatsVBoxContainer/PowerProducedContainer/PowerProducedRightLabel
+@onready var power_traded_right_label: Label = $StatsVBoxContainer/PowerTradedContainer/PowerTradedRightLabel
+@onready var power_bought_right_label: Label = $StatsVBoxContainer/PowerBoughtContainer/PowerBoughtRightLabel
+@onready var power_lost_right_label: Label = $StatsVBoxContainer/PowerLostContainer/PowerLostRightLabel
+@onready var power_sold_right_label: Label = $StatsVBoxContainer/PowerSoldContainer/powerSoldRightLabel
+
+@onready var money_earned_right_label: Label = $StatsVBoxContainer/MoneyEarnedContainer/MoneyEarnedRightLabel
+@onready var money_saved_right_label: Label = $StatsVBoxContainer/MoneySavedContainer/MoneySavedRightLabel
+@onready var money_spent_right_label: Label = $StatsVBoxContainer/MoneySpentContainer/MoneySpentRightLabel
+@onready var money_total_saved_right_label: Label = $StatsVBoxContainer/MoneyTotalSavedContainer/MoneyTotalSavedRightLabel
 
 
-
+@onready var spot_price_right_label: Label = $StatsVBoxContainer/SpotPriceContainer/SpotPriceRightLabel
+@onready var sell_price_right_label: Label = $StatsVBoxContainer/SellPriceContainer/SellPriceRightLabel
 
 var low_color: Color = Color.RED
 var mid_color: Color = Color.YELLOW
@@ -19,15 +24,19 @@ var high_color: Color = Color.GREEN
 
 
 func _physics_process(_delta: float) -> void:
-	ptl_label.text = "Power Traded Locally: " +str("%0.2f" % Stats.power_traded_locally)
-	pfpc_label.text = "Power From Power Company: " +str("%0.2f" % Stats.power_from_pc)
-	pll_label.text = "Power Lost Locally: " +str("%0.2f" % Stats.power_lost_locally)
-	pstpc_label.text = "Power Sold to Power Company: " +str("%0.2f" % Stats.power_sold)
-	m_earned_label.text = "Money Earned: " +str("%0.2f" % Stats.money_earned)
-	m_saved_label.text = "Money Saved: " +str("%0.2f" % Stats.money_saved)
-	m_spent_label.text = "Money Spent: " +str("%0.2f" % -Stats.money_spent)
-	c_spot_p_label.text = "Buy Price: " +str("%0.6f" % PowerMarket.buy_price)
-	c_sell_p_label.text = "Sell Price: " +str("%0.6f" % PowerMarket.sell_price)
+	time_left_label.text = "Simulated Time: " + str("%0.2f" % Stats.time) + "h"
+	time_right_label.text = "Real Time: " + str("%0.2f" % (Time.get_ticks_msec()/1000.0)) + "s"
+	power_consumed_right_label.text = Stats.format_num(Stats.power_consumed/1000, " ") +" kW"
+	power_produced_right_label.text = Stats.format_num(Stats.power_produced/1000, " ") +" kW"
+	power_traded_right_label.text = Stats.format_num(Stats.power_traded_locally/1000, " ") + " kW"
+	power_bought_right_label.text = Stats.format_num(Stats.power_from_pc/1000, " ") + " kW"
+	power_lost_right_label.text = Stats.format_num(Stats.power_lost_locally/1000, " ") + " kW"
+	power_sold_right_label.text = Stats.format_num(Stats.power_sold/1000, " ") +" kW"
+	money_earned_right_label.text = Stats.format_num(Stats.money_earned/100, " ") + " kr"
+	money_saved_right_label.text = Stats.format_num(Stats.money_saved/100, " ") + " kr"
+	money_total_saved_right_label.text = Stats.format_num((Stats.money_saved+Stats.money_earned)/100, " ") + " kr"
+	money_spent_right_label.text = Stats.format_num(-Stats.money_spent/100, " ") + " kr"
 	
-
+	spot_price_right_label.text = str("%0.6f" % (PowerMarket.buy_price*1000)) + " øre/kWh"
+	sell_price_right_label.text = str("%0.6f" % (PowerMarket.sell_price*1000)) + " øre/kWh"
 	

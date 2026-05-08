@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="local-energy-markets-lmo"
+config/name="local-energy-markets"
 run/main_scene="uid://dghm6p50wa0j6"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
@@ -24,6 +24,7 @@ Enums="*uid://dovfrpp11vluq"
 Stats="*uid://bawsbc2p4bhgr"
 ContractNegotiator="*uid://di3bhdgsns8am"
 PowerMarket="*uid://u6er0ermy72u"
+Settings="*uid://kxf0ki7o68d4"
 
 [file_customization]
 

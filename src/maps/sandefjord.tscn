@@ -1,181 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://2lhl5mvx6phg"]
+[gd_scene format=3 uid="uid://bgy2hp7kaoi0m"]
 
-[ext_resource type="Texture2D" uid="uid://fdbap6dav8qn" path="res://assets/maps/SandefjordKartInfill.png" id="1_lg367"]
-[ext_resource type="Script" uid="uid://cmy1m82dyenea" path="res://data/scripts/map.gd" id="2_orbt3"]
-[ext_resource type="PackedScene" uid="uid://7fjokfora8dw" path="res://src/buildings/school.tscn" id="3_orbt3"]
-[ext_resource type="Texture2D" uid="uid://jik0r0yw3l1g" path="res://assets/icons/hospital.png" id="4_orbt3"]
+[ext_resource type="Texture2D" uid="uid://fdbap6dav8qn" path="res://assets/maps/SandefjordKartInfill.png" id="1_3tk2h"]
+[ext_resource type="PackedScene" uid="uid://cltvoux6mcwpj" path="res://src/buildings/building.tscn" id="2_7xqrf"]
+[ext_resource type="PackedScene" uid="uid://le8rnsvq40o8" path="res://src/misc/building_spawner.tscn" id="2_orbt3"]
 
-[node name="Sandefjord" type="Sprite2D"]
-self_modulate = Color(0.30980393, 0.3372549, 0.23137255, 1)
-z_index = -3
-texture = ExtResource("1_lg367")
-script = ExtResource("2_orbt3")
-csv_match_error_margin = 9999
+[node name="Sandefjord" type="Node2D" unique_id=1297271289]
 
-[node name="Sykehus" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(187.00002, 85)
-texture = ExtResource("4_orbt3")
-consumption = 15.0
-capacity_MWh = 50.0
-power_share_treshold = 1.0
-power_deficit_treshold = 0.3
+[node name="MapSprite2D" type="Sprite2D" parent="." unique_id=667392832]
+self_modulate = Color(0.38463646, 0.5671489, 0.44195622, 1)
+texture = ExtResource("1_3tk2h")
 
-[node name="Høyjord Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(-73, -399)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
+[node name="BuildingSpawner" parent="." unique_id=1300547868 instance=ExtResource("2_orbt3")]
 
-[node name="Signo Skole og Kompetansesenter" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(-48, -265)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Andebu Ungdomsskole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(-26, -232)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Andebu Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(-16, -239)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Vennerød Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(67, -141)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Ramsum Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(142, -68)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Melsom Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(208, -48)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Bokemoa Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(144, -17)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Stokke Ungsomsskole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(127, -16)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Kodal Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(-61, 1)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Fevang Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(64, 64)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Helgerød Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(138, 167)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Unneberg Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(93, 163)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Mosserød Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(34, 178)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Mokollen Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(41, 185)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Moe Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(21, 189)
-consumption = 5.0
-randomize_solar_power_chance = 1.0
-
-[node name="Haukerød Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(5, 183)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Wang Ung" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(0, 175)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Krokemoa Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(-11, 215)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Virik Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(30, 236)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Ranvik Ungdomsskole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(43, 260)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Byskolen" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(56, 222)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Sande Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(63, 204)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Gokstad Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(97, 218)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Skagerak International School" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(75, 251)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Framnes Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(82, 254)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Varden Ungdomsskole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(101, 245)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Ormestad Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(101, 259)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Store Bergan Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(37, 298)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Vesterøy Skole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(111, 317)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Bugården Ungdomsskole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(24, 206)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
-
-[node name="Breidablikk Ungdomsskole" parent="." instance=ExtResource("3_orbt3")]
-position = Vector2(64, 182)
-consumption = 5.0
-randomize_solar_power_chance = 0.7
+[node name="Krokemoa Skole" parent="." unique_id=25950203 instance=ExtResource("2_7xqrf")]
+position = Vector2(36, 208)
+consumption_csv = "uid://d34yg8rkrj15q"
+consumption_column_index = 1
+production_csv = "uid://e6qr42fl6snw"
+production_column_index = 1
+system_loss_percent = 0.0

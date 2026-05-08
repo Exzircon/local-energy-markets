@@ -9,8 +9,10 @@
 self_modulate = Color(0.38463646, 0.5671489, 0.44195622, 1)
 texture = ExtResource("1_cx201")
 
-[node name="Krokemoa Skole" parent="." unique_id=517736859 instance=ExtResource("2_qrlkj")]
-position = Vector2(28, 202)
+[node name="Krokemoa Skole" parent="." unique_id=25950203 instance=ExtResource("2_qrlkj")]
+position = Vector2(36, 208)
+consumption_csv = "uid://d34yg8rkrj15q"
 consumption_column_index = 1
 production_csv = "uid://e6qr42fl6snw"
 production_column_index = 1
+system_loss_percent = 0.0

@@ -27,7 +27,7 @@ var money_earned: float = 0.0
 var money_spent: float = 0.0
 
 @export_category("External Data")
-@export_subgroup("Consumption", "consumption_")
+#@export_subgroup("Consumption", "consumption_")
 @export_file("*.csv") var consumption_csv: String
 @export var consumption_column_index: int
 var consumption_array : Array[float]
