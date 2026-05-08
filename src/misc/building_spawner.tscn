@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://le8rnsvq40o8"]
+
+[ext_resource type="Script" uid="uid://lucsocbdt8ss" path="res://data/custom_classes/building_spawner.gd" id="1_7htik"]
+
+[node name="BuildingSpawner" type="Node2D" unique_id=1300547868]
+script = ExtResource("1_7htik")
+folder_path = "/home/mikael/Documents/GodotStuffs/Projects/local-energy-markets/dataset/SandefjordEnergiConsumption/"

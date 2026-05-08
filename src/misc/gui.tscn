@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b5gy1h6wrdp6q" path="res://assets/icons/Sun.png" id="1_q42p5"]
 [ext_resource type="Script" uid="uid://bbbo0fv8d0o6w" path="res://data/scripts/sun_texture.gd" id="2_cup3q"]
-[ext_resource type="Script" uid="uid://dhuo12hx0nk61" path="res://data/scripts/total_stats_panel_container.gd" id="3_ewvcn"]
+[ext_resource type="Script" uid="uid://dpchtmr168m3j" path="res://data/scripts/settings_container.gd" id="3_cup3q"]
 [ext_resource type="Script" uid="uid://cntpuu1vntyun" path="res://data/scripts/global_stats_display.gd" id="4_cup3q"]
 [ext_resource type="Script" uid="uid://dr8kckvicssd4" path="res://data/scripts/building_stats_display.gd" id="4_s0n7b"]
 
@@ -29,18 +29,6 @@ corner_radius_top_right = 15
 corner_detail = 5
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlaii"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0.9372549, 1, 0, 0.4)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 6
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q42p5"]
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
 border_width_left = 10
@@ -66,6 +54,18 @@ corner_detail = 3
 shadow_color = Color(0, 0, 0, 0)
 anti_aliasing = false
 anti_aliasing_size = 0.01
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlaii"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.9372549, 1, 0, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
 
 [node name="GUI" type="CanvasLayer" unique_id=1629752547]
 
@@ -95,46 +95,74 @@ script = ExtResource("2_cup3q")
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="TotalStatsPanelContainer" type="PanelContainer" parent="HBoxContainer/LeftVBoxContainer" unique_id=803377951]
+[node name="SettingsContainer" type="PanelContainer" parent="HBoxContainer/LeftVBoxContainer" unique_id=803377951]
 custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_fyndt")
-script = ExtResource("3_ewvcn")
+script = ExtResource("3_cup3q")
 
-[node name="StatsVBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer" unique_id=1514803824]
+[node name="SettingsVBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer" unique_id=1514803824]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 2
 
-[node name="NameLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer" unique_id=1247598401]
+[node name="SpeedButtonsHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=1293527388]
 layout_mode = 2
-text = "Statistics"
 
-[node name="ConsumptionLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer" unique_id=1714411388]
+[node name="SpeedButtonLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SpeedButtonsHBoxContainer" unique_id=1738375809]
 layout_mode = 2
-text = "Test Text"
+text = "Speed: "
 
-[node name="ProductionLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer" unique_id=875202174]
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SpeedButtonsHBoxContainer" unique_id=1118178904]
 layout_mode = 2
-text = "Test Text"
-
-[node name="PowerDeltaLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer" unique_id=1195487736]
-layout_mode = 2
-text = "Test Text"
-
-[node name="BatteryLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer" unique_id=610373617]
-layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 6
 
-[node name="BatteryBar" type="ProgressBar" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer" unique_id=868259833]
+[node name="SpeedOptionButton" type="OptionButton" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SpeedButtonsHBoxContainer" unique_id=13869380]
 layout_mode = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_rlaii")
+selected = 1
+item_count = 6
+popup/item_0/text = "PAUSE"
+popup/item_0/id = 0
+popup/item_1/text = "HOUR"
+popup/item_1/id = 1
+popup/item_2/text = "DAY"
+popup/item_2/id = 2
+popup/item_3/text = "WEEK"
+popup/item_3/id = 3
+popup/item_4/text = "MONTH"
+popup/item_4/id = 4
+popup/item_5/text = "YEAR"
+popup/item_5/id = 5
 
-[node name="TimeLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/TotalStatsPanelContainer/StatsVBoxContainer" unique_id=1078885396]
+[node name="PauseAfterButtonsHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=223512950]
 layout_mode = 2
+
+[node name="PauseAfterButtonLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/PauseAfterButtonsHBoxContainer" unique_id=405744688]
+layout_mode = 2
+text = "Pause After: "
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/PauseAfterButtonsHBoxContainer" unique_id=1368276783]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 6
+
+[node name="PauseAfterOptionButton" type="OptionButton" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/PauseAfterButtonsHBoxContainer" unique_id=217832150]
+layout_mode = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "NEVER"
+popup/item_0/id = 0
+popup/item_1/text = "WEEK"
+popup/item_1/id = 1
+popup/item_2/text = "MONTH"
+popup/item_2/id = 2
+popup/item_3/text = "YEAR"
+popup/item_3/id = 3
+popup/item_4/text = "20 YEARS"
+popup/item_4/id = 4
 
 [node name="AlignmentPanel" type="Panel" parent="HBoxContainer" unique_id=197221559]
 layout_mode = 2
@@ -156,68 +184,223 @@ layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 2
 
-[node name="ptlLabel" type="RichTextLabel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=2127436805]
-custom_minimum_size = Vector2(400, 0)
+[node name="TimeContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=648097171]
 layout_mode = 2
-bbcode_enabled = true
-text = "Click on a building "
-fit_content = true
 
-[node name="pfpcLabel" type="RichTextLabel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1169487330]
-custom_minimum_size = Vector2(400, 0)
+[node name="TimeLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/TimeContainer" unique_id=1810259613]
 layout_mode = 2
-bbcode_enabled = true
-text = "Click on a building "
-fit_content = true
+text = "Power Consumed:"
 
-[node name="pllLabel" type="RichTextLabel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1278505180]
-custom_minimum_size = Vector2(400, 0)
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/TimeContainer" unique_id=591450858]
 layout_mode = 2
-bbcode_enabled = true
-text = "Click on a building "
-fit_content = true
+size_flags_horizontal = 2
 
-[node name="pstpcLabel" type="RichTextLabel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=278631607]
-custom_minimum_size = Vector2(400, 0)
+[node name="TimeRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/TimeContainer" unique_id=711100430]
 layout_mode = 2
-bbcode_enabled = true
-text = "Click on a building "
-fit_content = true
+text = "VALUE"
+horizontal_alignment = 2
 
-[node name="mEarnedLabel" type="RichTextLabel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1143529212]
-custom_minimum_size = Vector2(400, 0)
+[node name="PowerConsumedContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=687994428]
 layout_mode = 2
-bbcode_enabled = true
-text = "Click on a building "
-fit_content = true
 
-[node name="mSavedLabel" type="RichTextLabel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1640462467]
-custom_minimum_size = Vector2(400, 0)
+[node name="PowerConsumedLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerConsumedContainer" unique_id=306242572]
 layout_mode = 2
-bbcode_enabled = true
-text = "Click on a building "
-fit_content = true
+text = "Power Consumed:"
 
-[node name="mSpentLabel" type="RichTextLabel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1763622834]
-custom_minimum_size = Vector2(400, 0)
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerConsumedContainer" unique_id=306643566]
 layout_mode = 2
-bbcode_enabled = true
-text = "Click on a building "
-fit_content = true
+size_flags_horizontal = 2
 
-[node name="cSpotPLabel" type="RichTextLabel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=841032129]
-custom_minimum_size = Vector2(400, 0)
+[node name="PowerConsumedRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerConsumedContainer" unique_id=1748295881]
 layout_mode = 2
-bbcode_enabled = true
-text = "Click on a building "
-fit_content = true
+text = "VALUE"
+horizontal_alignment = 2
 
-[node name="cSellPLabel" type="RichTextLabel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=847939287]
-custom_minimum_size = Vector2(400, 0)
+[node name="PowerProducedContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1310937796]
 layout_mode = 2
-bbcode_enabled = true
-text = "Click on a building "
-fit_content = true
+
+[node name="PowerProducedLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerProducedContainer" unique_id=1150877931]
+layout_mode = 2
+text = "Power Produced:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerProducedContainer" unique_id=2125967043]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PowerProducedRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerProducedContainer" unique_id=946280602]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="PowerTradedContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1648584582]
+layout_mode = 2
+
+[node name="PowerTradedLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerTradedContainer" unique_id=315439077]
+layout_mode = 2
+text = "Power Traded:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerTradedContainer" unique_id=1723476835]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PowerTradedRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerTradedContainer" unique_id=1317800494]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="PowerBoughtContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1228465594]
+layout_mode = 2
+
+[node name="PowerBoughtLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerBoughtContainer" unique_id=691811980]
+layout_mode = 2
+text = "Power Bought:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerBoughtContainer" unique_id=1650890463]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PowerBoughtRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerBoughtContainer" unique_id=916577611]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="PowerLostContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=640521284]
+layout_mode = 2
+
+[node name="PowerLostLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerLostContainer" unique_id=1070847793]
+layout_mode = 2
+text = "Power Lost:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerLostContainer" unique_id=630903105]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PowerLostRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerLostContainer" unique_id=603923136]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="PowerSoldContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1982837079]
+layout_mode = 2
+
+[node name="PowerSoldLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerSoldContainer" unique_id=100510505]
+layout_mode = 2
+text = "Power Sold:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerSoldContainer" unique_id=1845943602]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="powerSoldRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/PowerSoldContainer" unique_id=101430197]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="SeperatorLine" type="ColorRect" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=576641802]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.7586944, 0.7586944, 0.75869435, 1)
+
+[node name="MoneyEarnedContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=542941399]
+layout_mode = 2
+
+[node name="MoneyEarnedLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneyEarnedContainer" unique_id=1728223785]
+layout_mode = 2
+text = "Money Earned:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneyEarnedContainer" unique_id=1195251608]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MoneyEarnedRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneyEarnedContainer" unique_id=419528996]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="MoneySavedContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=397644209]
+layout_mode = 2
+
+[node name="MoneySavedLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneySavedContainer" unique_id=1368395250]
+layout_mode = 2
+text = "Money Saved:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneySavedContainer" unique_id=1379492481]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MoneySavedRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneySavedContainer" unique_id=1295848869]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="MoneyTotalSavedContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1473686320]
+layout_mode = 2
+
+[node name="MoneyTotalSavedLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneyTotalSavedContainer" unique_id=1831649183]
+layout_mode = 2
+text = "                       ="
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneyTotalSavedContainer" unique_id=1664917613]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MoneyTotalSavedRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneyTotalSavedContainer" unique_id=411622102]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="MoneySpentContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=353543256]
+layout_mode = 2
+
+[node name="MoneySpentLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneySpentContainer" unique_id=1717582439]
+layout_mode = 2
+text = "Money Spent:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneySpentContainer" unique_id=1647851358]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MoneySpentRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/MoneySpentContainer" unique_id=1895517876]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="SeperatorLine2" type="ColorRect" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1460922916]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.7586944, 0.7586944, 0.75869435, 1)
+
+[node name="SpotPriceContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1861485339]
+layout_mode = 2
+
+[node name="SpotPriceLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SpotPriceContainer" unique_id=1775324542]
+layout_mode = 2
+text = "Spot Price:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SpotPriceContainer" unique_id=1248876337]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="SpotPriceRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SpotPriceContainer" unique_id=1464493408]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="SellPriceContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1275044937]
+layout_mode = 2
+
+[node name="SellPriceLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SellPriceContainer" unique_id=862682336]
+layout_mode = 2
+text = "Sell Price:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SellPriceContainer" unique_id=968695194]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="SellPriceRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SellPriceContainer" unique_id=1597501762]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
 
 [node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer" unique_id=599356935]
 layout_mode = 2

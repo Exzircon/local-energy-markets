@@ -45,22 +45,7 @@ func _ready() -> void:
 
 func auto_update() -> void:
 	time += 1.0 / Engine.physics_ticks_per_second
-	#if counter == 1: return
-	#if power_from_pc >= 1600000:
-	#	print_stats()
-	#	counter = 1
-	#return
-	if counter >= Engine.physics_ticks_per_second * 24:
-		counter = 0
-		print_stats()
-	else:
-		counter += 1
-	if time > 8760.0: ## Stops the simulation after a year (8760 hours)
-		get_tree().quit()
 	
-
-
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		print_stats()
@@ -68,9 +53,9 @@ func _input(event: InputEvent) -> void:
 func print_stats() -> void:
 	print("")
 	print("--=== Global Stats ===--") # Weird tabulation below results in easy to read print in output console
-	print("Time: ", str("%0.2f" % time))
-	print("Power Consumed:			", format_num(power_consumed), " Watts")
-	print("Power Produced:			", format_num(power_produced), " Watts")
+	print("Simulated Time: ", str("%0.2f" % time), "h --- Real Time: ", str("%0.2f" % (Time.get_ticks_msec()/1000.0)),"s")
+	print("Power Consumed:					", format_num(power_consumed), " Watts")
+	print("Power Produced:					", format_num(power_produced), " Watts")
 	print("Power Traded Locally:			", format_num(power_traded_locally), " Watts")
 	print("Power From Power Company:		", format_num(power_from_pc), " Watts")
 	print("Power Lost Locally:				", format_num(power_lost_locally), " Watts")
@@ -83,7 +68,7 @@ func print_stats() -> void:
 	print("Current Sell Price: ", PowerMarket.sell_price, " øre/wH")
 
 	
-func format_num(num: float, deci: int = 2, delimiter: String = "_") -> String:
+func format_num(num: float, delimiter: String = "_", deci: int = 2) -> String:
 	
 	var input: String = str("%0.2f" % num)
 	var output: String = ""

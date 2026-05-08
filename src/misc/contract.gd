@@ -10,9 +10,12 @@ var time: int = 0
 
 var amount: float = 0.0 #How much power should be sent each tick
 var efficiency: float = 1.0 #Should never be over 1.0
-var price: float = 0.2
+var price: float = 0.0
 
-
+#Efficiency = how much of the power reaches its destination.
+#At 1.0 (100%) efficiency, 1W has to be sent for every 1W recieved
+#At 0.5 (50%) efficiency, 2W has to be sent for every 1W recieved
+#At 0.2 (20%) efficiency, 5W has to be sent for every 1W recieved
 #Efficiency calc: amount / efficiency
 
 #TODO: Add efficiency

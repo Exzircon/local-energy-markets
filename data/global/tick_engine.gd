@@ -15,33 +15,22 @@ signal tick_trade_power()
 signal tick_deficit_power()
 signal tick_excess_power()
 
-
-
 signal tick(stage: Enums.TickStage)
 
 func _physics_process(_delta: float) -> void:
-	emit_ticks()
+	if Settings.speed > 0:
+		for i in range(Settings.speed):
+			if Settings.speed == 0: break
+			emit_ticks()
 
 func emit_ticks() -> void:
-	emit_signal("tick_enviroment")
-	emit_signal("tick_internal_power")
-	emit_signal("tick_trade_power")
-	emit_signal("tick_deficit_power")
-	emit_signal("tick_excess_power")
-
-
-func old_emit_ticks() -> void: ##TODO: Make signals discreete (one signal per thing, not this mess)
 	#Update enviroment (eg. Weather)
-	emit_signal("tick", Enums.TickStage.ENVIROMENT)
-	
+	emit_signal("tick_enviroment")
 	#Produce/Consume Power
-	emit_signal("tick", Enums.TickStage.INTERNAL_POWER)
-	
+	emit_signal("tick_internal_power")
 	#Trade Power
-	emit_signal("tick", Enums.TickStage.TRADE_POWER)
-	
+	emit_signal("tick_trade_power")
 	#Handle Deficit Power (Also handles trade from the new contracts at this step)
-	emit_signal("tick", Enums.TickStage.DEFICIT_POWER)
-	
+	emit_signal("tick_deficit_power")
 	#Handle Excess Power
-	emit_signal("tick", Enums.TickStage.EXCESS_POWER)
+	emit_signal("tick_excess_power")

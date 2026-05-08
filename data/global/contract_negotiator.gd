@@ -42,7 +42,7 @@ func create_contract(
 	contract.consumer = consumer
 	contract.provider = provider
 	contract.amount = amount
-	contract.efficiency = efficiency
+	#contract.efficiency = efficiency
 	contract.duration = 1
 	
 	consumer.contracts.append(contract)
