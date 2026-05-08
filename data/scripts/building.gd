@@ -27,7 +27,7 @@ var money_earned: float = 0.0
 var money_spent: float = 0.0
 
 @export_category("External Data")
-#@export_subgroup("Consumption", "consumption_")
+@export_subgroup("Consumption", "consumption_")
 @export_file("*.csv") var consumption_csv: String
 @export var consumption_column_index: int
 var consumption_array : Array[float]
@@ -84,7 +84,6 @@ func _ready() -> void:
 	
 
 
-
 func _physics_process(_delta: float) -> void:
 	_update_labels()
 
@@ -102,12 +101,13 @@ func trade_power() -> void:
 	return
 
 func deficit_power() -> void:
-	if power > 0: return
-	_set_color(-1.0)
+	if power >= 0: return
+	#_set_color(-1.0)
 	for i in range(1, contract_tries+1):
 		if not ContractNegotiator.request_contract(self, -power/i): continue
 		if power > 0: return
 	if power > 0: return
+	
 	##If not enough could be bought from local market. Get power from power company
 	Stats.power_from_pc -= power
 	money_spent += power * PowerMarket.buy_price
@@ -118,7 +118,7 @@ func excess_power() -> void:
 	#TODO: If building has excess power, 
 	#	either store in battery or sell to energy provider. (Plusskunde)
 	if not power > 0: return
-	_set_color(1.0)
+
 	Stats.power_sold += power
 	money_earned += power * PowerMarket.sell_price
 	Stats.money_earned += power * PowerMarket.sell_price
@@ -188,7 +188,8 @@ func load_consumption_csv() -> void:
 			values.append(line[consumption_column_index].to_float()*1000)#*1000 to change from kWh to Wh
 	file.close()
 	if len(values) == 0: #Error Handling
-		push_error("Len of Values == 0: ", name)
+		push_error("Len of Values == 0: ", name, file)
+		print(consumption_csv)
 		return
 	consumption_array = values
 	#print("VALUES: ", values)
@@ -213,7 +214,8 @@ func load_production_csv() -> void:
 			values.append(line[production_column_index].to_float())
 	file.close()
 	if len(values) == 0: #Error Handling
-		push_error("Len of Values == 0: ", name)
+		push_error("Len of Values == 0: ", name, " - File: ", file)
+		
 		return
 	production_array = values
 	#print(production_array)

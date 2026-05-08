@@ -2,7 +2,7 @@ extends Node2D
 @export_category("Building Spawner")
 @export var folder_path: String
 @export var ignore_list: Array[String]
-
+@onready var building_blueprint := preload("res://src/buildings/building.tscn")
 
 
 
@@ -31,9 +31,10 @@ func load_data() -> void:
 
 func create_building(file_name: String) -> void:
 	#print(folder_path+file_name)
-	var building: Building = Building.new()
-	building.name = file_name.substr(0, len(file_name)-4)
+	var building = building_blueprint.instantiate()
+	building.set_name(file_name.substr(0, len(file_name)-4))
 	building.consumption_csv = folder_path+file_name
+	building.consumption_column_index = 1
 	add_sibling.call_deferred(building)
 	building.global_position = get_rand_pos(300)
 	

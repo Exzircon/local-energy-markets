@@ -47,7 +47,7 @@ func load_hourly_prices_from_csv() -> Array:
 	while !file.eof_reached():
 		var line: PackedStringArray = file.get_csv_line(";")
 		if len(line) <= 1: continue
-		prices.append(float(line[2])) #Append price to array as øre/Wh
+		prices.append(float(line[2])*2) #Append price to array as øre/Wh
 		#TODO: Checking if higher prices lead to more money saved
 	file.close()
 	return prices

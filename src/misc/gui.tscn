@@ -137,12 +137,21 @@ popup/item_4/id = 4
 popup/item_5/text = "YEAR"
 popup/item_5/id = 5
 
+[node name="SeperatorLine" type="ColorRect" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=1196291592]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.7586944, 0.7586944, 0.75869435, 1)
+
+[node name="PauseLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=895381158]
+layout_mode = 2
+text = "PAUSE:"
+
 [node name="PauseAfterButtonsHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=223512950]
 layout_mode = 2
 
 [node name="PauseAfterButtonLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/PauseAfterButtonsHBoxContainer" unique_id=405744688]
 layout_mode = 2
-text = "Pause After: "
+text = "After: "
 
 [node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/PauseAfterButtonsHBoxContainer" unique_id=1368276783]
 layout_mode = 2
@@ -163,6 +172,25 @@ popup/item_3/text = "YEAR"
 popup/item_3/id = 3
 popup/item_4/text = "20 YEARS"
 popup/item_4/id = 4
+
+[node name="PauseSavedHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=1336711954]
+layout_mode = 2
+
+[node name="PauseSavedButtonLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/PauseSavedHBoxContainer" unique_id=1726909457]
+layout_mode = 2
+text = "Saved: "
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/PauseSavedHBoxContainer" unique_id=1215269977]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="PauseSavedLineEdit" type="LineEdit" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/PauseSavedHBoxContainer" unique_id=482377081]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+placeholder_text = "amount"
+alignment = 2
+expand_to_text_length = true
 
 [node name="AlignmentPanel" type="Panel" parent="HBoxContainer" unique_id=197221559]
 layout_mode = 2
