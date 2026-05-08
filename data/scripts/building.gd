@@ -43,7 +43,8 @@ var production_tick_counter: float = 0.0
 @export var peak_PV_power: float = 1.0
 @export_range(0.0, 1.0, 0.01) var system_loss_percent: float = 0.20 ##System power loss percentage (as float between 0.0 and 1.0)
 
-
+@export_subgroup("Battery")
+@export var battery : Battery
 #region Other variables
 ##Wether  or not the mouse is currently hovering the building
 var mouse_inside: bool = false 
@@ -103,6 +104,9 @@ func trade_power() -> void:
 
 func deficit_power() -> void:
 	if power > 0: return
+	
+	# if battery : // TODO: setup battery 
+	
 	_set_color(-1.0)
 	for i in range(1, contract_tries+1):
 		if not ContractNegotiator.request_contract(self, -power/i): continue
