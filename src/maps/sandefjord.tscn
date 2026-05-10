@@ -15,10 +15,141 @@ metadata/_custom_type_script = "uid://dujamqmqxref7"
 self_modulate = Color(0.38463646, 0.5671489, 0.44195622, 1)
 texture = ExtResource("1_3tk2h")
 
-[node name="Krokemoa Skole" parent="." unique_id=25950203 instance=ExtResource("2_7xqrf")]
-position = Vector2(36, 208)
+[node name="Buildings" type="Node2D" parent="." unique_id=1099075544]
+
+[node name="Andebu Skole" parent="Buildings" unique_id=517736859 instance=ExtResource("2_7xqrf")]
+position = Vector2(227, 286)
+consumption_csv = "uid://c4leq5sl01fuk"
+production_csv = "uid://bpt8o2j0kgdmb"
+
+[node name="Andebu Ungdomsskole" parent="Buildings" unique_id=26816874 instance=ExtResource("2_7xqrf")]
+position = Vector2(209, 242)
+consumption_csv = "uid://dao1xq7nqmcrl"
+production_csv = "uid://deo5soiolr1gs"
+
+[node name="Bokemoa Skole" parent="Buildings" unique_id=373524758 instance=ExtResource("2_7xqrf")]
+position = Vector2(205, 143)
+consumption_csv = "uid://brh2fhxa38nwe"
+production_csv = "uid://cbwxm615bsk25"
+
+[node name="Breidablikk Ungdomsskole" parent="Buildings" unique_id=2036623096 instance=ExtResource("2_7xqrf")]
+position = Vector2(77, 138)
+consumption_csv = "uid://c1iwqfdo21al0"
+production_csv = "uid://5nlwthvno3bq"
+
+[node name="Bugården Ungdomsskole" parent="Buildings" unique_id=1322764791 instance=ExtResource("2_7xqrf")]
+position = Vector2(-78, 161)
+consumption_csv = "uid://bis2qgkyndmj3"
+production_csv = "uid://b1dtrt5uuk5e5"
+
+[node name="Byskolen" parent="Buildings" unique_id=1052043183 instance=ExtResource("2_7xqrf")]
+position = Vector2(-19, 201)
+consumption_csv = "uid://l2drael7m3i2"
+production_csv = "uid://c2wjd2eyo8fn5"
+
+[node name="Fevang Skole" parent="Buildings" unique_id=1872988736 instance=ExtResource("2_7xqrf")]
+position = Vector2(132, 201)
+consumption_csv = "uid://el2cftbruplg"
+production_csv = "uid://bek1hprphgygg"
+
+[node name="Framnes Skole" parent="Buildings" unique_id=774685081 instance=ExtResource("2_7xqrf")]
+position = Vector2(30, 245)
+consumption_csv = "uid://bngofdpxguxtw"
+production_csv = "uid://cph1vhqixr6u8"
+
+[node name="Gokstad Skole" parent="Buildings" unique_id=335868518 instance=ExtResource("2_7xqrf")]
+position = Vector2(92, 226)
+consumption_csv = "uid://cuo2p84hlel61"
+production_csv = "uid://cmmxtt11xxta6"
+
+[node name="Haukerød Skole" parent="Buildings" unique_id=1406872514 instance=ExtResource("2_7xqrf")]
+position = Vector2(36, 154)
+consumption_csv = "uid://br64sw7bo6vea"
+production_csv = "uid://dmb8g57g6a6l4"
+
+[node name="Helgerød Skole" parent="Buildings" unique_id=899990724 instance=ExtResource("2_7xqrf")]
+position = Vector2(-23, 243)
+consumption_csv = "uid://ojt06flotlib"
+production_csv = "uid://dbd14i6c8e5og"
+
+[node name="Høyjord Skole" parent="Buildings" unique_id=754128300 instance=ExtResource("2_7xqrf")]
+position = Vector2(-10, 171)
+consumption_csv = "uid://dwh67pn8e2mbn"
+production_csv = "uid://ih0geahl88ay"
+
+[node name="Kodal Skole" parent="Buildings" unique_id=838568996 instance=ExtResource("2_7xqrf")]
+position = Vector2(80, 170)
+consumption_csv = "uid://ctfn401jin1dt"
+production_csv = "uid://xmlrhpggur77"
+
+[node name="Krokemoa Skole" parent="Buildings" unique_id=25950203 instance=ExtResource("2_7xqrf")]
+position = Vector2(103, 290)
 consumption_csv = "uid://d34yg8rkrj15q"
-consumption_column_index = 1
-production_column_index = 1
+production_csv = "uid://e55lk31o6d32"
 system_loss_percent = 0.0
 battery = SubResource("Resource_7xqrf")
+
+[node name="Melsom Skole" parent="Buildings" unique_id=397890041 instance=ExtResource("2_7xqrf")]
+position = Vector2(208, 192)
+consumption_csv = "uid://bdlu36w1oq1ni"
+production_csv = "uid://bhfvg4lwakigo"
+
+[node name="Mosserød Skole" parent="Buildings" unique_id=824971403 instance=ExtResource("2_7xqrf")]
+position = Vector2(109, 93)
+consumption_csv = "uid://ca3fa6gxxllhr"
+production_csv = "uid://c7h0kahvmcwun"
+
+[node name="Ormestad Skole" parent="Buildings" unique_id=1326993551 instance=ExtResource("2_7xqrf")]
+position = Vector2(-36, 290)
+consumption_csv = "uid://j8ler7a4okas"
+production_csv = "uid://b677i31krgf3s"
+
+[node name="Ramsum Skole" parent="Buildings" unique_id=1889215905 instance=ExtResource("2_7xqrf")]
+position = Vector2(145, 240)
+consumption_csv = "uid://dfp4mxfhspswq"
+production_csv = "uid://dhcxhy55eh62t"
+
+[node name="Ranvik Ungdomsskole" parent="Buildings" unique_id=805301955 instance=ExtResource("2_7xqrf")]
+position = Vector2(45, 105)
+consumption_csv = "uid://6k5q4r0y0g6u"
+production_csv = "uid://b0p7amghhkxc3"
+
+[node name="Sande Skole" parent="Buildings" unique_id=354658481 instance=ExtResource("2_7xqrf")]
+position = Vector2(-68, 216)
+consumption_csv = "uid://5k3msredd0d4"
+production_csv = "uid://wwwngdmqgh17"
+
+[node name="Stokke Ungdomsskole" parent="Buildings" unique_id=746524063 instance=ExtResource("2_7xqrf")]
+position = Vector2(142, 162)
+consumption_csv = "uid://dg2ecstmmq8lt"
+production_csv = "uid://cvq0d4xl3jkpu"
+
+[node name="Store Gargan Skole" parent="Buildings" unique_id=277597023 instance=ExtResource("2_7xqrf")]
+position = Vector2(-30, 136)
+consumption_csv = "uid://cxxhsqrywtpxx"
+production_csv = "uid://dngpyr5m7tbw5"
+
+[node name="Unneberg Skole" parent="Buildings" unique_id=327904967 instance=ExtResource("2_7xqrf")]
+position = Vector2(37, 283)
+consumption_csv = "uid://b4wdxbpjlkoxj"
+production_csv = "uid://dloy3lrjkggo1"
+
+[node name="Varden Ungdomsskole" parent="Buildings" unique_id=935970251 instance=ExtResource("2_7xqrf")]
+position = Vector2(152, 266)
+consumption_csv = "uid://dpy4ms4ctc81y"
+production_csv = "uid://dtoh0jn8hks1y"
+
+[node name="Vennerød Skole" parent="Buildings" unique_id=1209026717 instance=ExtResource("2_7xqrf")]
+position = Vector2(-65, 276)
+consumption_csv = "uid://ruuh6j2622aq"
+production_csv = "uid://ds750ryls0rno"
+
+[node name="Vesterøy Skole" parent="Buildings" unique_id=1843233076 instance=ExtResource("2_7xqrf")]
+position = Vector2(-32, 91)
+consumption_csv = "uid://dsej2qmoale3l"
+production_csv = "uid://dbywlhwvb6sjt"
+
+[node name="Virik Skole" parent="Buildings" unique_id=1505390662 instance=ExtResource("2_7xqrf")]
+position = Vector2(144, 124)
+consumption_csv = "uid://n4tsjj320gti"
+production_csv = "uid://dhajwgryopys6"

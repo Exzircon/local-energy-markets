@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_mn54f"]
 script = ExtResource("3_kctwv")
-capacity = 300.0
+capacity = 1000000.0
 metadata/_custom_type_script = "uid://dujamqmqxref7"
 
 [node name="TestMap" type="Node2D" unique_id=1297271289]
@@ -18,8 +18,7 @@ texture = ExtResource("1_cx201")
 [node name="Krokemoa Skole" parent="." unique_id=25950203 instance=ExtResource("2_qrlkj")]
 position = Vector2(36, 208)
 consumption_csv = "uid://d34yg8rkrj15q"
-consumption_column_index = 1
-production_csv = "uid://e6qr42fl6snw"
-production_column_index = 1
+production_csv = "uid://e55lk31o6d32"
+peak_PV_power = 335.5
 system_loss_percent = 0.0
 battery = SubResource("Resource_mn54f")

@@ -3,9 +3,9 @@ class_name Building
 ##Class for generic buildings, with all the power options needed to simulate an energy market
 
 @export_category("Building Stats")
-@export var production: float = 15.0: #Production in Watt
+@export var production: float = 0.0: #Production in Watt
 	get():
-		if production_array:
+		if production_array and peak_PV_power > 0.0:
 			return production_array[production_idx] * peak_PV_power * (1.0-system_loss_percent) * Settings.degregation_factor / Engine.physics_ticks_per_second #The production array contains the total power (in Watt) produced in that hour. Divifing by Engine.physics_ticks_per_second gives us the value approperate for our simulation resolution.
 		else:
 			return production
@@ -15,8 +15,7 @@ class_name Building
 			return consumption_array[consumption_idx] / Engine.physics_ticks_per_second
 		else:
 			return consumption
-var power: float = 5.0 					#Current power in Watt
-@export var capacity: float = 10.0 		#Battery capacity in Watt
+var power: float = 0.0  ##Current power in Watt
 
 ## How many attempts at splitting the power trade the building has before giving up
 @export var contract_tries: int = 3
@@ -27,21 +26,21 @@ var money_earned: float = 0.0
 var money_spent: float = 0.0
 
 @export_category("External Data")
-@export_group("Consumption", "consumption_")
+#@export_group("Consumption", "consumption_")
 @export_file("*.csv") var consumption_csv: String
-@export var consumption_column_index: int
+@export var consumption_column_index: int = 1
 var consumption_array : Array[float]
 var consumption_idx: int = 1
 var consumption_tick_counter: float = 0.0
 
-@export_group("Production", "production_")
+#@export_group("Production", "production_")
 @export_file("*.csv") var production_csv: String
-@export var production_column_index: int
+@export var production_column_index: int = 1
 var production_array: Array[float]
 var production_idx: int = 1
 var production_tick_counter: float = 0.0
-@export var peak_PV_power: float = 1.0
-@export_range(0.0, 1.0, 0.01) var system_loss_percent: float = 0.20 ##System power loss percentage (as float between 0.0 and 1.0)
+@export var peak_PV_power: float = 0.0
+@export_range(0.0, 1.0, 0.01) var system_loss_percent: float = 0.14 ##System power loss percentage (as float between 0.0 and 1.0)
 
 @export_group("Battery")
 @export var battery: Battery
