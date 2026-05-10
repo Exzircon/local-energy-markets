@@ -18,9 +18,6 @@ var price: float = 0.0
 #At 0.2 (20%) efficiency, 5W has to be sent for every 1W recieved
 #Efficiency calc: amount / efficiency
 
-#TODO: Add efficiency
-
-
 func _init() -> void:
 	TickEngine.tick_trade_power.connect(trade_power)
 

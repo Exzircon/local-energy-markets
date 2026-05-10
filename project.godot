@@ -18,13 +18,18 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*uid://di0iqg7a15655"
-Weather="*uid://bgrtjxr40giji"
+Weather="uid://bgrtjxr40giji"
 TickEngine="*uid://ocjg2fpw0m2d"
 Enums="*uid://dovfrpp11vluq"
 Stats="*uid://bawsbc2p4bhgr"
 ContractNegotiator="*uid://di3bhdgsns8am"
 PowerMarket="*uid://u6er0ermy72u"
 Settings="*uid://kxf0ki7o68d4"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [file_customization]
 
@@ -63,6 +68,12 @@ right={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194321,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+pause={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
 ]
 }
 

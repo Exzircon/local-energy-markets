@@ -2,6 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://fdbap6dav8qn" path="res://assets/maps/SandefjordKartInfill.png" id="1_cx201"]
 [ext_resource type="PackedScene" uid="uid://cltvoux6mcwpj" path="res://src/buildings/building.tscn" id="2_qrlkj"]
+[ext_resource type="Script" uid="uid://dujamqmqxref7" path="res://src/misc/battery.gd" id="3_kctwv"]
+
+[sub_resource type="Resource" id="Resource_mn54f"]
+script = ExtResource("3_kctwv")
+capacity = 300.0
+metadata/_custom_type_script = "uid://dujamqmqxref7"
 
 [node name="TestMap" type="Node2D" unique_id=1297271289]
 
@@ -16,3 +22,4 @@ consumption_column_index = 1
 production_csv = "uid://e6qr42fl6snw"
 production_column_index = 1
 system_loss_percent = 0.0
+battery = SubResource("Resource_mn54f")

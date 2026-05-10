@@ -13,12 +13,12 @@ var tick_counter: int = 0
 
 var buy_price: float = 0.0 ## Øre/Wh
 
-## How much the power comapany takes when you sell your excess power to them. So when selling you would get Spotpris - påslag øre/kWh. The amount varies greatly. Have found as low as 2.0 øre/kWh to 5.49 øre/kWh. 
-var påslag: float = 0.00549 # øre/Wh 
+## How much the power comapany takes when you sell your excess power to them. So when selling you would get Spotpris - surcharge øre/kWh. The amount varies greatly. Have found as low as 2.0 øre/kWh to 5.49 øre/kWh. 
+var surcharge: float = 0.00549 # øre/Wh 
 
 var sell_price: float:
 	get():
-		return max(buy_price - påslag, 0.0)
+		return max(buy_price - surcharge, 0.0)
 
 
 func _ready() -> void:
@@ -32,7 +32,8 @@ func update() -> void:
 		if price_index >= len(hourly_prices):
 			price_index = 0
 		tick_counter = 0
-	buy_price = hourly_prices[price_index]
+	var inflation: float = 1.04 ** int(Stats.time / 8760) #TODO: Account for inflation
+	buy_price = hourly_prices[price_index] * inflation
 	#buy_price = 0.151
 
 

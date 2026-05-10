@@ -83,6 +83,7 @@ scale = Vector2(0.36160713, 0.36160713)
 texture = ExtResource("2_yyuy6")
 
 [node name="ProvideSprite" type="Sprite2D" parent="." unique_id=349491372]
+visible = false
 position = Vector2(-7, 14.000002)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_nng3d")
