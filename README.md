@@ -12,5 +12,6 @@ The required tools to run this project consist of:
 ## Setup
 1. Install and unpack Godot 4.5.1
 2. Clone this repository
-3. Launch Godot and open this project in Godot
-4. Press play to open Simulation
+3. Launch Godot and open the project file: ```./project.godot``` in Godot
+
+5. Press play to open Simulation
