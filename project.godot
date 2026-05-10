@@ -77,6 +77,10 @@ pause={
 ]
 }
 
+[internationalization]
+
+rendering/root_node_auto_translate=false
+
 [physics]
 
 2d/run_on_separate_thread=true

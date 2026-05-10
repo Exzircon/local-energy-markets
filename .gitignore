@@ -8,3 +8,4 @@ ext_scripts/Coords And Rads/radiation/
 ext_scripts/Coords And Rads/SandefjordSkolerCoords.txt
 .idea/
 ext_scripts/.idea/
+dataset/SolarProduction/*
