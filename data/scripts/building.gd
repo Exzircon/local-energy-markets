@@ -6,7 +6,7 @@ class_name Building
 @export var production: float = 15.0: #Production in Watt
 	get():
 		if production_array:
-			return production_array[production_idx] * peak_PV_power * (1.0-system_loss_percent) / Engine.physics_ticks_per_second #The production array contains the total power (in Watt) produced in that hour. Divifing by Engine.physics_ticks_per_second gives us the value approperate for our simulation resolution.
+			return production_array[production_idx] * peak_PV_power * (1.0-system_loss_percent) * Settings.degregation_factor / Engine.physics_ticks_per_second #The production array contains the total power (in Watt) produced in that hour. Divifing by Engine.physics_ticks_per_second gives us the value approperate for our simulation resolution.
 		else:
 			return production
 @export var consumption: float = 2222.22 / Engine.physics_ticks_per_second: ##W/h
@@ -27,14 +27,14 @@ var money_earned: float = 0.0
 var money_spent: float = 0.0
 
 @export_category("External Data")
-@export_subgroup("Consumption", "consumption_")
+@export_group("Consumption", "consumption_")
 @export_file("*.csv") var consumption_csv: String
 @export var consumption_column_index: int
 var consumption_array : Array[float]
 var consumption_idx: int = 1
 var consumption_tick_counter: float = 0.0
 
-@export_subgroup("Production", "production_")
+@export_group("Production", "production_")
 @export_file("*.csv") var production_csv: String
 @export var production_column_index: int
 var production_array: Array[float]
@@ -43,6 +43,8 @@ var production_tick_counter: float = 0.0
 @export var peak_PV_power: float = 1.0
 @export_range(0.0, 1.0, 0.01) var system_loss_percent: float = 0.20 ##System power loss percentage (as float between 0.0 and 1.0)
 
+@export_group("Battery")
+@export var battery: Battery
 
 #region Other variables
 ##Wether  or not the mouse is currently hovering the building
@@ -50,9 +52,9 @@ var mouse_inside: bool = false
 
 ## Colors used to depict energy values
 @export_group("Colors")
-@export var low_color: Color = Color.RED
-@export var mid_color: Color = Color.YELLOW
-@export var high_color: Color = Color.GREEN
+@export var color_high: Color = Color.from_hsv(0.4, 0.5, 0.7, 1.0)
+@export var color_neutral: Color = Color.from_hsv(0.12, 0.7, 1.0, 1.0)
+@export var color_low: Color = Color.from_hsv(1, 0.5, 0.7, 1.0)
 
 @onready var panel_container: PanelContainer = $PanelContainer
 @onready var name_label: Label = $PanelContainer/VBoxContainer/NameLabel
@@ -81,6 +83,10 @@ func _ready() -> void:
 	TickEngine.tick_deficit_power.connect(trade_power)
 	TickEngine.tick_trade_power.connect(deficit_power)
 	TickEngine.tick_excess_power.connect(excess_power)
+	TickEngine.tick_cleanup.connect(cleanup)
+	
+	if not battery:
+		battery_sprite.hide()
 	
 
 
@@ -103,6 +109,10 @@ func trade_power() -> void:
 func deficit_power() -> void:
 	if power >= 0: return
 	#_set_color(-1.0)
+	if battery:
+		power += battery.discharge(-power) #Negative as we're requesting the power we have in deficit.
+	
+	if power >= 0: return
 	for i in range(1, contract_tries+1):
 		if not ContractNegotiator.request_contract(self, -power/i): continue
 		if power > 0: return
@@ -118,19 +128,24 @@ func excess_power() -> void:
 	#TODO: If building has excess power, 
 	#	either store in battery or sell to energy provider. (Plusskunde)
 	if not power > 0: return
-
+	if battery:
+		#print("BATTERY")
+		power -= battery.charge(power)
+	
 	Stats.power_sold += power
 	money_earned += power * PowerMarket.sell_price
 	Stats.money_earned += power * PowerMarket.sell_price
 	power = 0.0
 
-
-
+func cleanup() -> void:
+	if not battery: return
+	if battery.percentage >= 0.5:
+		battery_sprite.self_modulate = lerp(color_neutral, color_high, (battery.percentage-0.5) * 2)
+	else:
+		battery_sprite.self_modulate = lerp(color_low, color_neutral, (battery.percentage) * 2)
 
 func _set_color(amount: float) -> void:
-	var color_low: Color = Color.from_hsv(0.4, 0.5, 0.7, 1.0)
-	var color_neutral: Color = Color.from_hsv(0.12, 0.7, 1.0, 1.0)
-	var color_high: Color = Color.from_hsv(1, 0.5, 0.7, 1.0)
+
 	
 	if amount > 0.0: self_modulate = color_high
 	elif amount < 0.0: self_modulate = color_low

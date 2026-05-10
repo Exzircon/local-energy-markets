@@ -87,6 +87,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_3cfgd")
 
 [node name="SunTexture" type="TextureRect" parent="HBoxContainer/LeftVBoxContainer/SunPanelContainer" unique_id=1521322657]
+visible = false
 layout_mode = 2
 texture = ExtResource("1_q42p5")
 script = ExtResource("2_cup3q")
@@ -137,10 +138,8 @@ popup/item_4/id = 4
 popup/item_5/text = "YEAR"
 popup/item_5/id = 5
 
-[node name="SeperatorLine" type="ColorRect" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=1196291592]
-custom_minimum_size = Vector2(0, 1)
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=302169182]
 layout_mode = 2
-color = Color(0.7586944, 0.7586944, 0.75869435, 1)
 
 [node name="PauseLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=895381158]
 layout_mode = 2
@@ -192,6 +191,29 @@ placeholder_text = "amount"
 alignment = 2
 expand_to_text_length = true
 
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=320960652]
+visible = false
+layout_mode = 2
+
+[node name="SurchargeHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=1266627066]
+visible = false
+layout_mode = 2
+
+[node name="SurchargeButtonLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SurchargeHBoxContainer" unique_id=1998856584]
+layout_mode = 2
+text = "øre/kWh"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SurchargeHBoxContainer" unique_id=380414030]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="SurchargeHScrollBar" type="HScrollBar" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SurchargeHBoxContainer" unique_id=717424965]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+
 [node name="AlignmentPanel" type="Panel" parent="HBoxContainer" unique_id=197221559]
 layout_mode = 2
 size_flags_horizontal = 2
@@ -212,12 +234,17 @@ layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 2
 
+[node name="SimulatedTimeLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1810259613]
+layout_mode = 2
+text = "SimulatedTime:"
+
 [node name="TimeContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=648097171]
 layout_mode = 2
 
-[node name="TimeLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/TimeContainer" unique_id=1810259613]
+[node name="TimeLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/TimeContainer" unique_id=1145902468]
 layout_mode = 2
-text = "Power Consumed:"
+text = "Real Time: "
+horizontal_alignment = 2
 
 [node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/TimeContainer" unique_id=591450858]
 layout_mode = 2
@@ -227,6 +254,9 @@ size_flags_horizontal = 2
 layout_mode = 2
 text = "VALUE"
 horizontal_alignment = 2
+
+[node name="HSeparator4" type="HSeparator" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=238466293]
+layout_mode = 2
 
 [node name="PowerConsumedContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=687994428]
 layout_mode = 2
@@ -324,10 +354,62 @@ layout_mode = 2
 text = "VALUE"
 horizontal_alignment = 2
 
-[node name="SeperatorLine" type="ColorRect" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=576641802]
-custom_minimum_size = Vector2(0, 1)
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1605036235]
 layout_mode = 2
-color = Color(0.7586944, 0.7586944, 0.75869435, 1)
+
+[node name="BatteryCapacityContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1427151677]
+layout_mode = 2
+
+[node name="BatteryCapacityLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/BatteryCapacityContainer" unique_id=1795853954]
+layout_mode = 2
+text = "Battery Capacity:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/BatteryCapacityContainer" unique_id=1249599087]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="BatteryCapacityRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/BatteryCapacityContainer" unique_id=434021534]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="BatteryPowerContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1533085696]
+layout_mode = 2
+
+[node name="BatteryPowerLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/BatteryPowerContainer" unique_id=128590953]
+layout_mode = 2
+text = "Stored Power: "
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/BatteryPowerContainer" unique_id=358345231]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="BatteryPowerRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/BatteryPowerContainer" unique_id=1000509502]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=949577776]
+layout_mode = 2
+
+[node name="SolarPanelEfficiencyContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1279610806]
+layout_mode = 2
+
+[node name="SolarPanelEfficiencyLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SolarPanelEfficiencyContainer" unique_id=229069110]
+layout_mode = 2
+text = "Solar Panel Efficiency: "
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SolarPanelEfficiencyContainer" unique_id=631641152]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="SolarPanelEfficiencyRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SolarPanelEfficiencyContainer" unique_id=402501182]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="HSeparator5" type="HSeparator" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1781971867]
+layout_mode = 2
 
 [node name="MoneyEarnedContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=542941399]
 layout_mode = 2
@@ -393,10 +475,8 @@ layout_mode = 2
 text = "VALUE"
 horizontal_alignment = 2
 
-[node name="SeperatorLine2" type="ColorRect" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1460922916]
-custom_minimum_size = Vector2(0, 1)
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=153740013]
 layout_mode = 2
-color = Color(0.7586944, 0.7586944, 0.75869435, 1)
 
 [node name="SpotPriceContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1861485339]
 layout_mode = 2
@@ -426,6 +506,22 @@ layout_mode = 2
 size_flags_horizontal = 2
 
 [node name="SellPriceRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SellPriceContainer" unique_id=1597501762]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
+[node name="SurchargeContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1518513694]
+layout_mode = 2
+
+[node name="SurchargeLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SurchargeContainer" unique_id=1525370729]
+layout_mode = 2
+text = "Surcharge: "
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SurchargeContainer" unique_id=1946293522]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="SurchargeRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/SurchargeContainer" unique_id=1196489320]
 layout_mode = 2
 text = "VALUE"
 horizontal_alignment = 2

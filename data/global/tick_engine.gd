@@ -14,6 +14,7 @@ signal tick_internal_power()
 signal tick_trade_power()
 signal tick_deficit_power()
 signal tick_excess_power()
+signal tick_cleanup()
 
 signal tick(stage: Enums.TickStage)
 
@@ -34,3 +35,5 @@ func emit_ticks() -> void:
 	emit_signal("tick_deficit_power")
 	#Handle Excess Power
 	emit_signal("tick_excess_power")
+	#Handle Cleanup
+	emit_signal("tick_cleanup")
