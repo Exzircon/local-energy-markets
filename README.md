@@ -10,7 +10,7 @@ The required tools to run this project consist of:
 - [Godot 4.5.1](https://godotengine.org/download/archive/)
 
 ## Setup
-1. Install and unpack Godot 4.5.1
+1. Install and unpack Godot 4.5.1+
 2. Clone this repository
 3. Launch Godot and open the project file: ```./project.godot``` in Godot
 
