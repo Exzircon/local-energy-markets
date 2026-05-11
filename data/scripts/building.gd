@@ -48,8 +48,8 @@ var production_tick_counter: float = 0.0
 
 @export_group("Smart Placement")
 @export var smart_placement_enabled: bool = true
-var latitude: float
-var longditude: float
+@export var latitude: float
+@export var longditude: float
 @export var map_scale: float = 1320.0
 @export var map_scale_offset_x: float = -59.0
 @export var map_scale_offset_y: float = -10.0
@@ -96,7 +96,7 @@ func _ready() -> void:
 	TickEngine.tick_trade_power.connect(deficit_power)
 	TickEngine.tick_excess_power.connect(excess_power)
 	TickEngine.tick_cleanup.connect(cleanup)
-	
+	if smart_placement_enabled: _relocate_bulding()
 	if not battery:
 		battery_sprite.hide()
 	print("Ready: ", name)
@@ -114,6 +114,8 @@ func internal_power() -> void:
 	Stats.money_saved += power_saved * PowerMarket.buy_price
 	Stats.power_produced += production
 	Stats.power_consumed += consumption
+	if power > 0.0:
+		PowerMarket.market_providers.append(self)
 
 func trade_power() -> void:
 	#IGNORE: Contracts should be ticked here, not buildings
@@ -252,7 +254,7 @@ func load_production_csv() -> void:
 		if line[production_column_index].is_valid_float():
 			values.append(line[production_column_index].to_float())
 	file.close()
-	if smart_placement_enabled: _relocate_bulding()
+	#if smart_placement_enabled: _relocate_bulding()
 	if len(values) == 0: #Error Handling
 		push_error("Len of Values == 0: ", name, " - File: ", file)
 		return

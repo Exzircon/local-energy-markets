@@ -1,163 +1,170 @@
-[gd_scene format=3 uid="uid://bgy2hp7kaoi0m"]
+[gd_scene format=3 uid="uid://cxumtk62qw1l"]
 
-[ext_resource type="Texture2D" uid="uid://fdbap6dav8qn" path="res://assets/maps/SandefjordKartInfill.png" id="1_3tk2h"]
-[ext_resource type="PackedScene" uid="uid://cltvoux6mcwpj" path="res://src/buildings/building.tscn" id="2_7xqrf"]
+[ext_resource type="Texture2D" uid="uid://fdbap6dav8qn" path="res://assets/maps/SandefjordKartInfill.png" id="1_kivbv"]
+[ext_resource type="PackedScene" uid="uid://cltvoux6mcwpj" path="res://src/buildings/building.tscn" id="2_yy1m8"]
+[ext_resource type="Script" uid="uid://dujamqmqxref7" path="res://src/misc/battery.gd" id="3_e5nka"]
+
+[sub_resource type="Resource" id="Resource_7xqrf"]
+script = ExtResource("3_e5nka")
+capacity = 1000000.0
+metadata/_custom_type_script = "uid://dujamqmqxref7"
 
 [node name="Sandefjord" type="Node2D" unique_id=1297271289]
 
 [node name="MapSprite2D" type="Sprite2D" parent="." unique_id=667392832]
 self_modulate = Color(0.38463646, 0.5671489, 0.44195622, 1)
-texture = ExtResource("1_3tk2h")
+texture = ExtResource("1_kivbv")
 offset = Vector2(-107.665, -110.39)
 
 [node name="Buildings" type="Node2D" parent="." unique_id=1099075544]
 
 [node name="Schools" type="Node2D" parent="Buildings" unique_id=754988339]
 
-[node name="Andebu Skole" parent="Buildings/Schools" unique_id=517736859 instance=ExtResource("2_7xqrf")]
+[node name="Andebu Skole" parent="Buildings/Schools" unique_id=517736859 instance=ExtResource("2_yy1m8")]
 position = Vector2(427.99997, 291.00003)
 consumption_csv = "uid://c4leq5sl01fuk"
 production_csv = "uid://bpt8o2j0kgdmb"
 
-[node name="Andebu Ungdomsskole" parent="Buildings/Schools" unique_id=26816874 instance=ExtResource("2_7xqrf")]
+[node name="Andebu Ungdomsskole" parent="Buildings/Schools" unique_id=26816874 instance=ExtResource("2_yy1m8")]
 position = Vector2(425.00003, 265.99997)
 consumption_csv = "uid://dao1xq7nqmcrl"
 production_csv = "uid://deo5soiolr1gs"
 
-[node name="Bokemoa Skole" parent="Buildings/Schools" unique_id=373524758 instance=ExtResource("2_7xqrf")]
+[node name="Bokemoa Skole" parent="Buildings/Schools" unique_id=373524758 instance=ExtResource("2_yy1m8")]
 position = Vector2(420.39996, 171.4)
 consumption_csv = "uid://brh2fhxa38nwe"
 production_csv = "uid://cbwxm615bsk25"
 
-[node name="Breidablikk Ungdomsskole" parent="Buildings/Schools" unique_id=2036623096 instance=ExtResource("2_7xqrf")]
+[node name="Breidablikk Ungdomsskole" parent="Buildings/Schools" unique_id=2036623096 instance=ExtResource("2_yy1m8")]
 position = Vector2(359.4, 213.4)
 consumption_csv = "uid://c1iwqfdo21al0"
 production_csv = "uid://5nlwthvno3bq"
 
-[node name="Bugården Ungdomsskole" parent="Buildings/Schools" unique_id=1322764791 instance=ExtResource("2_7xqrf")]
+[node name="Bugården Ungdomsskole" parent="Buildings/Schools" unique_id=1322764791 instance=ExtResource("2_yy1m8")]
 position = Vector2(238.4, 164.4)
 consumption_csv = "uid://bis2qgkyndmj3"
 production_csv = "uid://b1dtrt5uuk5e5"
 
-[node name="Byskolen" parent="Buildings/Schools" unique_id=1052043183 instance=ExtResource("2_7xqrf")]
+[node name="Byskolen" parent="Buildings/Schools" unique_id=1052043183 instance=ExtResource("2_yy1m8")]
 position = Vector2(306.4, 198.4)
 consumption_csv = "uid://l2drael7m3i2"
 production_csv = "uid://c2wjd2eyo8fn5"
 
-[node name="Fevang Skole" parent="Buildings/Schools" unique_id=1872988736 instance=ExtResource("2_7xqrf")]
+[node name="Fevang Skole" parent="Buildings/Schools" unique_id=1872988736 instance=ExtResource("2_yy1m8")]
 position = Vector2(395, 260)
 consumption_csv = "uid://el2cftbruplg"
 production_csv = "uid://bek1hprphgygg"
 
-[node name="Framnes Skole" parent="Buildings/Schools" unique_id=774685081 instance=ExtResource("2_7xqrf")]
+[node name="Framnes Skole" parent="Buildings/Schools" unique_id=774685081 instance=ExtResource("2_yy1m8")]
 position = Vector2(328.4, 270.4)
 consumption_csv = "uid://bngofdpxguxtw"
 production_csv = "uid://cph1vhqixr6u8"
 
-[node name="Gokstad Skole" parent="Buildings/Schools" unique_id=335868518 instance=ExtResource("2_7xqrf")]
+[node name="Gokstad Skole" parent="Buildings/Schools" unique_id=335868518 instance=ExtResource("2_yy1m8")]
 position = Vector2(364.40002, 282.4)
 consumption_csv = "uid://cuo2p84hlel61"
 production_csv = "uid://cmmxtt11xxta6"
 
-[node name="Haukerød Skole" parent="Buildings/Schools" unique_id=1406872514 instance=ExtResource("2_7xqrf")]
+[node name="Haukerød Skole" parent="Buildings/Schools" unique_id=1406872514 instance=ExtResource("2_yy1m8")]
 position = Vector2(334.4, 214.4)
 consumption_csv = "uid://br64sw7bo6vea"
 production_csv = "uid://dmb8g57g6a6l4"
 
-[node name="Helgerød Skole" parent="Buildings/Schools" unique_id=899990724 instance=ExtResource("2_7xqrf")]
+[node name="Helgerød Skole" parent="Buildings/Schools" unique_id=899990724 instance=ExtResource("2_yy1m8")]
 position = Vector2(302.4, 240.4)
 consumption_csv = "uid://ojt06flotlib"
 production_csv = "uid://dbd14i6c8e5og"
 
-[node name="Høyjord Skole" parent="Buildings/Schools" unique_id=754128300 instance=ExtResource("2_7xqrf")]
+[node name="Høyjord Skole" parent="Buildings/Schools" unique_id=754128300 instance=ExtResource("2_yy1m8")]
 position = Vector2(315.4, 168.4)
 consumption_csv = "uid://dwh67pn8e2mbn"
 production_csv = "uid://ih0geahl88ay"
 
-[node name="Kodal Skole" parent="Buildings/Schools" unique_id=838568996 instance=ExtResource("2_7xqrf")]
+[node name="Kodal Skole" parent="Buildings/Schools" unique_id=838568996 instance=ExtResource("2_yy1m8")]
 position = Vector2(362.4, 245.4)
 consumption_csv = "uid://ctfn401jin1dt"
 production_csv = "uid://xmlrhpggur77"
 
-[node name="Krokemoa Skole" parent="Buildings/Schools" unique_id=25950203 instance=ExtResource("2_7xqrf")]
+[node name="Krokemoa Skole" parent="Buildings/Schools" unique_id=25950203 instance=ExtResource("2_yy1m8")]
 position = Vector2(363.00003, 305.00003)
 consumption_csv = "uid://d34yg8rkrj15q"
 production_csv = "uid://e55lk31o6d32"
+battery = SubResource("Resource_7xqrf")
 
-[node name="Melsom Skole" parent="Buildings/Schools" unique_id=397890041 instance=ExtResource("2_7xqrf")]
+[node name="Melsom Skole" parent="Buildings/Schools" unique_id=397890041 instance=ExtResource("2_yy1m8")]
 position = Vector2(423.39996, 220.4)
 consumption_csv = "uid://bdlu36w1oq1ni"
 production_csv = "uid://bhfvg4lwakigo"
 
-[node name="Mosserød Skole" parent="Buildings/Schools" unique_id=824971403 instance=ExtResource("2_7xqrf")]
+[node name="Mosserød Skole" parent="Buildings/Schools" unique_id=824971403 instance=ExtResource("2_yy1m8")]
 position = Vector2(371.4, 168.4)
 consumption_csv = "uid://ca3fa6gxxllhr"
 production_csv = "uid://c7h0kahvmcwun"
 
-[node name="Ormestad Skole" parent="Buildings/Schools" unique_id=1326993551 instance=ExtResource("2_7xqrf")]
+[node name="Ormestad Skole" parent="Buildings/Schools" unique_id=1326993551 instance=ExtResource("2_yy1m8")]
 position = Vector2(289.4, 287.4)
 consumption_csv = "uid://j8ler7a4okas"
 production_csv = "uid://b677i31krgf3s"
 
-[node name="Ramsum Skole" parent="Buildings/Schools" unique_id=1889215905 instance=ExtResource("2_7xqrf")]
+[node name="Ramsum Skole" parent="Buildings/Schools" unique_id=1889215905 instance=ExtResource("2_yy1m8")]
 position = Vector2(392, 289.00003)
 consumption_csv = "uid://dfp4mxfhspswq"
 production_csv = "uid://dhcxhy55eh62t"
 
-[node name="Ranvik Ungdomsskole" parent="Buildings/Schools" unique_id=805301955 instance=ExtResource("2_7xqrf")]
+[node name="Ranvik Ungdomsskole" parent="Buildings/Schools" unique_id=805301955 instance=ExtResource("2_yy1m8")]
 position = Vector2(343.39996, 165.4)
 consumption_csv = "uid://6k5q4r0y0g6u"
 production_csv = "uid://b0p7amghhkxc3"
 
-[node name="Sande Skole" parent="Buildings/Schools" unique_id=354658481 instance=ExtResource("2_7xqrf")]
+[node name="Sande Skole" parent="Buildings/Schools" unique_id=354658481 instance=ExtResource("2_yy1m8")]
 position = Vector2(248.4, 219.4)
 consumption_csv = "uid://5k3msredd0d4"
 production_csv = "uid://wwwngdmqgh17"
 
-[node name="Stokke Ungdomsskole" parent="Buildings/Schools" unique_id=746524063 instance=ExtResource("2_7xqrf")]
+[node name="Stokke Ungdomsskole" parent="Buildings/Schools" unique_id=746524063 instance=ExtResource("2_yy1m8")]
 position = Vector2(395.4, 216.4)
 consumption_csv = "uid://dg2ecstmmq8lt"
 production_csv = "uid://cvq0d4xl3jkpu"
 
-[node name="Store Gargan Skole" parent="Buildings/Schools" unique_id=277597023 instance=ExtResource("2_7xqrf")]
+[node name="Store Gargan Skole" parent="Buildings/Schools" unique_id=277597023 instance=ExtResource("2_yy1m8")]
 position = Vector2(278.4, 200.4)
 consumption_csv = "uid://cxxhsqrywtpxx"
 production_csv = "uid://dngpyr5m7tbw5"
 
-[node name="Unneberg Skole" parent="Buildings/Schools" unique_id=327904967 instance=ExtResource("2_7xqrf")]
+[node name="Unneberg Skole" parent="Buildings/Schools" unique_id=327904967 instance=ExtResource("2_yy1m8")]
 position = Vector2(335.4, 308.4)
 consumption_csv = "uid://b4wdxbpjlkoxj"
 production_csv = "uid://dloy3lrjkggo1"
 
-[node name="Varden Ungdomsskole" parent="Buildings/Schools" unique_id=935970251 instance=ExtResource("2_7xqrf")]
+[node name="Varden Ungdomsskole" parent="Buildings/Schools" unique_id=935970251 instance=ExtResource("2_yy1m8")]
 position = Vector2(395, 321)
 consumption_csv = "uid://dpy4ms4ctc81y"
 production_csv = "uid://dtoh0jn8hks1y"
 
-[node name="Vennerød Skole" parent="Buildings/Schools" unique_id=1209026717 instance=ExtResource("2_7xqrf")]
+[node name="Vennerød Skole" parent="Buildings/Schools" unique_id=1209026717 instance=ExtResource("2_yy1m8")]
 position = Vector2(251.4, 279.4)
 consumption_csv = "uid://ruuh6j2622aq"
 production_csv = "uid://ds750ryls0rno"
 
-[node name="Vesterøy Skole" parent="Buildings/Schools" unique_id=1843233076 instance=ExtResource("2_7xqrf")]
+[node name="Vesterøy Skole" parent="Buildings/Schools" unique_id=1843233076 instance=ExtResource("2_yy1m8")]
 position = Vector2(276.4, 155.4)
 consumption_csv = "uid://dsej2qmoale3l"
 production_csv = "uid://dbywlhwvb6sjt"
 
-[node name="Virik Skole" parent="Buildings/Schools" unique_id=1505390662 instance=ExtResource("2_7xqrf")]
+[node name="Virik Skole" parent="Buildings/Schools" unique_id=1505390662 instance=ExtResource("2_yy1m8")]
 position = Vector2(398.4, 167.4)
 consumption_csv = "uid://n4tsjj320gti"
 production_csv = "uid://dhajwgryopys6"
 
 [node name="HealthCenters" type="Node2D" parent="Buildings" unique_id=1752977242]
 
-[node name="Sandefjord Medisinske Senteret" parent="Buildings/HealthCenters" unique_id=1550548632 instance=ExtResource("2_7xqrf")]
+[node name="Sandefjord Medisinske Senteret" parent="Buildings/HealthCenters" unique_id=1550548632 instance=ExtResource("2_yy1m8")]
 position = Vector2(20.400002, 18.40001)
 consumption_csv = "uid://bjcfnnr556wrh"
 latitude = 59.134
 longditude = 10.212
 
-[node name="Solvang legesenter" parent="Buildings/HealthCenters" unique_id=142779105 instance=ExtResource("2_7xqrf")]
+[node name="Solvang legesenter" parent="Buildings/HealthCenters" unique_id=142779105 instance=ExtResource("2_yy1m8")]
 position = Vector2(20.400002, 18.40001)
 consumption_csv = "uid://cuui47vnwd0sh"
 latitude = 59.135
@@ -165,37 +172,37 @@ longditude = 10.211
 
 [node name="Sportcomplexs" type="Node2D" parent="Buildings" unique_id=360221617]
 
-[node name="Andebuhallen" parent="Buildings/Sportcomplexs" unique_id=71716543 instance=ExtResource("2_7xqrf")]
+[node name="Andebuhallen" parent="Buildings/Sportcomplexs" unique_id=71716543 instance=ExtResource("2_yy1m8")]
 position = Vector2(20.400002, 18.40001)
 consumption_csv = "uid://dhxa8k7dh2gfk"
 latitude = 59.305
 longditude = 10.171
 
-[node name="Bugården Ishall" parent="Buildings/Sportcomplexs" unique_id=1578246689 instance=ExtResource("2_7xqrf")]
+[node name="Bugården Ishall" parent="Buildings/Sportcomplexs" unique_id=1578246689 instance=ExtResource("2_yy1m8")]
 position = Vector2(20.400002, 18.40001)
 consumption_csv = "uid://b8g85w8sq8l6v"
 latitude = 59.135
 longditude = 10.195
 
-[node name="Bugården Svømmehall" parent="Buildings/Sportcomplexs" unique_id=940401640 instance=ExtResource("2_7xqrf")]
+[node name="Bugården Svømmehall" parent="Buildings/Sportcomplexs" unique_id=940401640 instance=ExtResource("2_yy1m8")]
 position = Vector2(20.400002, 18.40001)
 consumption_csv = "uid://8a50l2fb2vfe"
 latitude = 59.134
 longditude = 10.193
 
-[node name="Bugårdshallen" parent="Buildings/Sportcomplexs" unique_id=272402821 instance=ExtResource("2_7xqrf")]
+[node name="Bugårdshallen" parent="Buildings/Sportcomplexs" unique_id=272402821 instance=ExtResource("2_yy1m8")]
 position = Vector2(20.400002, 18.40001)
 consumption_csv = "uid://cv828hspa3q5"
 latitude = 59.133
 longditude = 10.188
 
-[node name="Jotunhallen" parent="Buildings/Sportcomplexs" unique_id=1558872332 instance=ExtResource("2_7xqrf")]
+[node name="Jotunhallen" parent="Buildings/Sportcomplexs" unique_id=1558872332 instance=ExtResource("2_yy1m8")]
 position = Vector2(20.400002, 18.40001)
 consumption_csv = "uid://c0j5tp5evleg2"
 latitude = 59.133
 longditude = 10.193
 
-[node name="Stokke Idrettshall" parent="Buildings/Sportcomplexs" unique_id=1619457571 instance=ExtResource("2_7xqrf")]
+[node name="Stokke Idrettshall" parent="Buildings/Sportcomplexs" unique_id=1619457571 instance=ExtResource("2_yy1m8")]
 position = Vector2(20.400002, 18.40001)
 consumption_csv = "uid://doimwc2mtjjsh"
 latitude = 59.22
@@ -203,31 +210,31 @@ longditude = 10.278
 
 [node name="NursingCenters" type="Node2D" parent="Buildings" unique_id=1684695435]
 
-[node name="Aagaardstunet" parent="Buildings/NursingCenters" unique_id=1372822856 instance=ExtResource("2_7xqrf")]
+[node name="Aagaardstunet" parent="Buildings/NursingCenters" unique_id=1372822856 instance=ExtResource("2_yy1m8")]
 position = Vector2(20.400002, 18.40001)
 consumption_csv = "uid://cxe5d5q5pk8c6"
 latitude = 59.132
 longditude = 10.219
 
-[node name="Bugårdssentret" parent="Buildings/NursingCenters" unique_id=1905917558 instance=ExtResource("2_7xqrf")]
+[node name="Bugårdssentret" parent="Buildings/NursingCenters" unique_id=1905917558 instance=ExtResource("2_yy1m8")]
 position = Vector2(20.400002, 18.40001)
 consumption_csv = "uid://cgq7ws7bl5vqv"
 latitude = 59.134
 longditude = 10.186
 
-[node name="Forsmannsenteret" parent="Buildings/NursingCenters" unique_id=1104827566 instance=ExtResource("2_7xqrf")]
+[node name="Forsmannsenteret" parent="Buildings/NursingCenters" unique_id=1104827566 instance=ExtResource("2_yy1m8")]
 position = Vector2(137, 26)
 consumption_csv = "uid://c22g3cj5cgjb3"
 latitude = 59.133
 longditude = 10.22
 
-[node name="Framnessenteret" parent="Buildings/NursingCenters" unique_id=2112532298 instance=ExtResource("2_7xqrf")]
+[node name="Framnessenteret" parent="Buildings/NursingCenters" unique_id=2112532298 instance=ExtResource("2_yy1m8")]
 position = Vector2(-87.99999, 65)
 consumption_csv = "uid://drqusq1mqqli8"
 latitude = 59.118
 longditude = 10.234
 
-[node name="Møylandssenteret" parent="Buildings/NursingCenters" unique_id=1649712963 instance=ExtResource("2_7xqrf")]
+[node name="Møylandssenteret" parent="Buildings/NursingCenters" unique_id=1649712963 instance=ExtResource("2_yy1m8")]
 position = Vector2(-106, -312)
 consumption_csv = "uid://i3tiahgf043c"
 latitude = 59.304

@@ -20,9 +20,13 @@ var sell_price: float:
 	get():
 		return max(buy_price - surcharge, 0.0)
 
+var market_providers: Array[Building] = []
+
+
 
 func _ready() -> void:
 	TickEngine.tick_enviroment.connect(update)
+	TickEngine.tick_cleanup.connect(cleanup)
 	hourly_prices = load_hourly_prices_from_csv()
 
 func update() -> void:
@@ -40,6 +44,9 @@ func update() -> void:
 	#1,51 kr/kWt CurrPrice
 	#151,00 øre/kWt			=0,151 øre/Wt
 	#5,49 øre/kWh Påslag		=0.00549
+
+func cleanup() -> void:
+	market_providers.clear()
 
 
 func load_hourly_prices_from_csv() -> Array:

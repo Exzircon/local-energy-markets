@@ -4,7 +4,7 @@ extends Node
 ## Function for requesting power from other buildings in the local energy market.
 ## 	AHGiuhas
 func request_contract(consumer: Building, amount: float) -> bool:
-	var buildings = get_tree().get_nodes_in_group("buildings")
+	var buildings = PowerMarket.market_providers
 	var best_provider: Building
 	var best_efficiency: float = 0.0
 	
