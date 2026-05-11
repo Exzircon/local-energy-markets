@@ -10,6 +10,7 @@
 radius = 13.333333
 
 [node name="Building" type="Sprite2D" unique_id=517736859 groups=["buildings"]]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_yyuy6")
 script = ExtResource("2_nng3d")
 

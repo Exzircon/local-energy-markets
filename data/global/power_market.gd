@@ -39,7 +39,7 @@ func update() -> void:
 
 	#1,51 kr/kWt CurrPrice
 	#151,00 øre/kWt			=0,151 øre/Wt
-	#5,49 øre/kWh Påslag	=0.00549
+	#5,49 øre/kWh Påslag		=0.00549
 
 
 func load_hourly_prices_from_csv() -> Array:

@@ -12,15 +12,14 @@ var low_color: Color = Color.RED
 var mid_color: Color = Color.YELLOW
 var high_color: Color = Color.GREEN
 
-func _init() -> void:
-	SignalBus.connect("display_stats", display_stats)
+
 
 func _physics_process(_delta: float) -> void:
 	if not building: return
 	consumption_label.text = "Consumption: " + str("%0.2f" % building.consumption)
 	production_label.text = "Production: " + str("%0.2f" % building.production)
-	battery_label.text = str("%0.2f" % building.power) + " | " + str("%0.2f" % building.capacity)
-	battery_bar.value = building.power / building.capacity * 100
+	#battery_label.text = str("%0.2f" % building.power) + " | " + str("%0.2f" % building.capacity)
+	#battery_bar.value = building.power / building.capacity * 100
 	_update_progress_bar_color(building.power / building.capacity * 100)
 
 

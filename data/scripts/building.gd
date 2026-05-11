@@ -18,7 +18,7 @@ class_name Building
 var power: float = 0.0  ##Current power in Watt
 
 ## How many attempts at splitting the power trade the building has before giving up
-@export var contract_tries: int = 3
+@export var contract_tries: int = 1
 
 var contracts: Array[Contract] = [] ## Array for holding all contracts the building is part of
 
@@ -44,6 +44,19 @@ var production_tick_counter: float = 0.0
 
 @export_group("Battery")
 @export var battery: Battery
+
+
+@export_group("Smart Placement")
+@export var smart_placement_enabled: bool = true
+var latitude: float
+var longditude: float
+@export var map_scale: float = 1320.0
+@export var map_scale_offset_x: float = -59.0
+@export var map_scale_offset_y: float = -10.0
+@export var map_offset_x: float = 460.0
+@export var map_offset_y: float = -345.0
+
+
 
 #region Other variables
 ##Wether  or not the mouse is currently hovering the building
@@ -86,6 +99,7 @@ func _ready() -> void:
 	
 	if not battery:
 		battery_sprite.hide()
+	print("Ready: ", name)
 	
 
 
@@ -203,9 +217,10 @@ func load_consumption_csv() -> void:
 	file.close()
 	if len(values) == 0: #Error Handling
 		push_error("Len of Values == 0: ", name, file)
-		print(consumption_csv)
+		#print(consumption_csv)
 		return
 	consumption_array = values
+	#print(name, " - finised loading consumption data")
 	#print("VALUES: ", values)
 	
 func update_consumption() -> void:
@@ -220,19 +235,40 @@ func load_production_csv() -> void:
 	if not production_csv: return
 	var file := FileAccess.open(production_csv, FileAccess.READ)
 	var values: Array[float] = []
+	var line_index: int = 0
+	if not smart_placement_enabled: line_index = 5
 	while !file.eof_reached():
 		var line: PackedStringArray = file.get_csv_line(",")
+		if line_index < 2:
+			var str_arr = line[0].split("\t")
+			if line_index == 0:
+				latitude = float(str_arr[1])
+			elif line_index == 1:
+				longditude = float(str_arr[1])
+			line_index += 1
+			continue
 		if line.size() < 3: continue
 		#print(production_column_index, line, " valid? -> ", line[production_column_index].is_valid_float())
 		if line[production_column_index].is_valid_float():
 			values.append(line[production_column_index].to_float())
 	file.close()
+	if smart_placement_enabled: _relocate_bulding()
 	if len(values) == 0: #Error Handling
 		push_error("Len of Values == 0: ", name, " - File: ", file)
-		
 		return
 	production_array = values
+	#print(name, " - finised loading production data")
 	#print(production_array)
+	
+	
+
+func _relocate_bulding() -> void:
+	
+	global_position.y = -(latitude + map_scale_offset_x) * map_scale * 2 + map_offset_x
+	global_position.x = (longditude + map_scale_offset_y) * map_scale + map_offset_y
+	#print("Lat: ", latitude, " - Lon: ", longditude)
+	#print("Pos: ", global_position)
+
 
 func update_produciton() -> void:
 	production_tick_counter += 1.0 / Engine.physics_ticks_per_second
