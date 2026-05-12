@@ -13,5 +13,8 @@ The required tools to run this project consist of:
 1. Install and unpack Godot 4.5.1+
 2. Clone this repository
 3. Launch Godot and open the project file: ```./project.godot``` in Godot
-
+4. Add the missing dataset folder ```SolarProduction``` from the confidential datasets. If datasets is unavailable, remove preset files and make your own, or request the dataset. 
 5. Press play to open Simulation
+
+## Requesting dataset
+Contact the muncipality of Sandefjord, if you get their permission, get them to contact us for the dataset. 
