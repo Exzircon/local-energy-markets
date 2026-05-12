@@ -17,6 +17,8 @@ extends PanelContainer
 @onready var battery_power_container: HBoxContainer = $StatsVBoxContainer/BatteryPowerContainer
 
 @onready var solar_panel_efficiency_right_label: Label = $StatsVBoxContainer/SolarPanelEfficiencyContainer/SolarPanelEfficiencyRightLabel
+@onready var kwp_right_label: Label = $StatsVBoxContainer/kWpContainer/kWpRightLabel
+
 
 @onready var money_earned_right_label: Label = $StatsVBoxContainer/MoneyEarnedContainer/MoneyEarnedRightLabel
 @onready var money_saved_right_label: Label = $StatsVBoxContainer/MoneySavedContainer/MoneySavedRightLabel
@@ -31,7 +33,12 @@ var low_color: Color = Color.RED
 var mid_color: Color = Color.YELLOW
 var high_color: Color = Color.GREEN
 
-
+func _ready() -> void:
+	var peak_pv: float = 0.0
+	for building in get_tree().get_nodes_in_group("buildings"):
+		print("Building: ", building.name, " - kWp: ", building.peak_PV_power)
+		peak_pv += building.peak_PV_power
+	kwp_right_label.text = Stats.format_num(peak_pv, " ") + "kWp"
 
 func _physics_process(_delta: float) -> void:
 	#time_left_label.text = "Simulated Time: " + str("%0.2f" % Stats.time) + "h"

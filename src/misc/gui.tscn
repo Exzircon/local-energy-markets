@@ -439,6 +439,22 @@ layout_mode = 2
 text = "VALUE"
 horizontal_alignment = 2
 
+[node name="kWpContainer" type="HBoxContainer" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=775105382]
+layout_mode = 2
+
+[node name="kWpLeftLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/kWpContainer" unique_id=1916118951]
+layout_mode = 2
+text = "Peak PV power: "
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/kWpContainer" unique_id=290410092]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="kWpRightLabel" type="Label" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer/kWpContainer" unique_id=967451195]
+layout_mode = 2
+text = "VALUE"
+horizontal_alignment = 2
+
 [node name="HSeparator5" type="HSeparator" parent="HBoxContainer/RightVBoxContainer/GlobalStatsPanelContainer/StatsVBoxContainer" unique_id=1781971867]
 layout_mode = 2
 

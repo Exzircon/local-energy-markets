@@ -162,7 +162,7 @@ peak_PV_power = 267.2
 position = Vector2(251.4, 279.4)
 consumption_csv = "uid://ruuh6j2622aq"
 production_csv = "uid://ds750ryls0rno"
-peak_PV_power = 2050.2
+peak_PV_power = 250.2
 
 [node name="Vesterøy Skole" parent="Buildings/Schools" unique_id=1843233076 instance=ExtResource("2_v11vw")]
 position = Vector2(276.4, 155.4)
