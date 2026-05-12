@@ -31,7 +31,8 @@ func pause_after_selected(id: int) -> void:
 		1: pause_after = 168.0
 		2: pause_after = 720.0
 		3: pause_after = 8760.0
-		4: pause_after = 175320.0
+		4: pause_after = 8760.0 * 20.0
+		5: pause_after = 8760.0 * 25.0
 		5: pause_after = 8760.0 * 30.0
 
 func enviroment_tick() -> void:
