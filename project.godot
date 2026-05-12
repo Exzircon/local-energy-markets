@@ -85,6 +85,7 @@ rendering/root_node_auto_translate=false
 
 2d/run_on_separate_thread=true
 3d/run_on_separate_thread=true
+common/physics_ticks_per_second=10
 3d/physics_engine="Jolt Physics"
 
 [rendering]

@@ -123,7 +123,7 @@ size_flags_vertical = 6
 
 [node name="SpeedOptionButton" type="OptionButton" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SpeedButtonsHBoxContainer" unique_id=13869380]
 layout_mode = 2
-selected = 1
+selected = 0
 item_count = 6
 popup/item_0/text = "PAUSE"
 popup/item_0/id = 0
@@ -160,7 +160,7 @@ size_flags_vertical = 6
 [node name="PauseAfterOptionButton" type="OptionButton" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/PauseAfterButtonsHBoxContainer" unique_id=217832150]
 layout_mode = 2
 selected = 0
-item_count = 5
+item_count = 6
 popup/item_0/text = "NEVER"
 popup/item_0/id = 0
 popup/item_1/text = "WEEK"
@@ -171,6 +171,8 @@ popup/item_3/text = "YEAR"
 popup/item_3/id = 3
 popup/item_4/text = "20 YEARS"
 popup/item_4/id = 4
+popup/item_5/text = "30 YEARS"
+popup/item_5/id = 5
 
 [node name="PauseSavedHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=1336711954]
 layout_mode = 2
@@ -213,6 +215,35 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 step = 1.0
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=1221533343]
+layout_mode = 2
+
+[node name="InflationHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=290156659]
+layout_mode = 2
+
+[node name="InflationLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/InflationHBoxContainer" unique_id=1806123785]
+layout_mode = 2
+text = "Inflation:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/InflationHBoxContainer" unique_id=1245003653]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="InflationHScrollBar" type="HScrollBar" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/InflationHBoxContainer" unique_id=138654179]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 2.0
+step = 0.01
+value = 1.0
+
+[node name="InflationValueLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/InflationHBoxContainer" unique_id=562841797]
+layout_mode = 2
+text = "VALUE"
 
 [node name="AlignmentPanel" type="Panel" parent="HBoxContainer" unique_id=197221559]
 layout_mode = 2
@@ -531,6 +562,7 @@ layout_mode = 2
 size_flags_vertical = 6
 
 [node name="BuildingStatsPanelContainer" type="PanelContainer" parent="HBoxContainer/RightVBoxContainer" unique_id=402506013]
+visible = false
 custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 size_flags_horizontal = 8

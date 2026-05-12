@@ -4,22 +4,23 @@ extends Node
 ## Function for requesting power from other buildings in the local energy market.
 ## 	AHGiuhas
 func request_contract(consumer: Building, amount: float) -> bool:
-	var buildings = PowerMarket.market_providers
+	#return false #Temporary disable trading of power to demonstrate baseline case
+	var buildings = PowerMarket.market_providers #A list of all builings with excess power
 	var best_provider: Building
 	var best_efficiency: float = 0.0
 	
+	#Loop which checks which provider is best able (most efficient) at delivering the required power 
 	for building in buildings:
 		if building == consumer: continue
-		var efficiency: float = calculate_efficiency(consumer, building)
+		var efficiency: float = calculate_efficiency(consumer, building) 
 		if building.power <= amount/efficiency: continue
 		if efficiency > best_efficiency:
 			best_efficiency = efficiency
 			best_provider = building
-	if not best_provider: return false
+	if not best_provider: return false #Returns false if no contract was made
 	var contract: Contract = create_contract(consumer, best_provider, amount, best_efficiency)
 	contract.trade_power() # Transfers the power as soon as the contract has been made
-	#print("Traded with: ", best_provider)
-	return true
+	return true #Returns true if a contract was sucessfully made
 
 
 func calculate_efficiency(a: Building, b: Building) -> float:

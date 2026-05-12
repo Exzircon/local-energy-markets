@@ -40,7 +40,7 @@ var production_array: Array[float]
 var production_idx: int = 1
 var production_tick_counter: float = 0.0
 @export var peak_PV_power: float = 0.0
-@export_range(0.0, 1.0, 0.01) var system_loss_percent: float = 0.14 ##System power loss percentage (as float between 0.0 and 1.0)
+@export_range(0.0, 1.0, 0.01) var system_loss_percent: float = 0.03 ##System power loss percentage (as float between 0.0 and 1.0)
 
 @export_group("Battery")
 @export var battery: Battery

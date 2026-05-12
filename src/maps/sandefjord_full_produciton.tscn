@@ -2,12 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://fdbap6dav8qn" path="res://assets/maps/SandefjordKartInfill.png" id="1_f4vxm"]
 [ext_resource type="PackedScene" uid="uid://cltvoux6mcwpj" path="res://src/buildings/building.tscn" id="2_v11vw"]
-[ext_resource type="Script" uid="uid://dujamqmqxref7" path="res://src/misc/battery.gd" id="3_v7evl"]
-
-[sub_resource type="Resource" id="Resource_7xqrf"]
-script = ExtResource("3_v7evl")
-capacity = 1000000.0
-metadata/_custom_type_script = "uid://dujamqmqxref7"
 
 [node name="Sandefjord" type="Node2D" unique_id=1297271289]
 
@@ -103,7 +97,6 @@ position = Vector2(363.00003, 305.00003)
 consumption_csv = "uid://d34yg8rkrj15q"
 production_csv = "uid://e55lk31o6d32"
 peak_PV_power = 335.5
-battery = SubResource("Resource_7xqrf")
 
 [node name="Melsom Skole" parent="Buildings/Schools" unique_id=397890041 instance=ExtResource("2_v11vw")]
 position = Vector2(423.39996, 220.4)
