@@ -17,4 +17,4 @@ The required tools to run this project consist of:
 5. Press play to open Simulation
 
 ## Requesting dataset
-Contact the muncipality of Sandefjord, if you get their permission, get them to contact us for the dataset. 
+Contact the municipality of Sandefjord, if you get their permission, get them to contact us for the dataset. 
