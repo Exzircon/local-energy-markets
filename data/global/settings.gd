@@ -5,8 +5,11 @@ extends Node
 
 var speed: int = 1 #How many times one round of ticks is sent each _physics_process call
 
-var inflation: float = 1.02 ## How fast the price of power grows each year
+var inflation: float = 1.036 ## How fast the price of power grows each year
 
+var viritual_island: bool = true
+
+var base_system_loss: float = 0.03
 var degregation_speed: float = 0.005 ## How fast the efficiency of solar panels degrade each year after the first
 var degregation_speed_year_one: float = 0.03 ## How fast the efficiency of the solar panel degrades the first year
 var degregation_factor: float: ##Current solar power efficiency.
@@ -16,6 +19,8 @@ var degregation_factor: float: ##Current solar power efficiency.
 			return (1-degregation_speed_year_one) ** years
 		return (1-degregation_speed_year_one) * ((1-degregation_speed) ** (years-1))
 
+var max_export_rate: float = -1.0
+var yearly_max: float = -1.0
 
 
 func connect_speed_button(btn: OptionButton) -> void:

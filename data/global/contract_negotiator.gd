@@ -4,7 +4,7 @@ extends Node
 ## Function for requesting power from other buildings in the local energy market.
 ## 	AHGiuhas
 func request_contract(consumer: Building, amount: float) -> bool:
-	#return false #Temporary disable trading of power to demonstrate baseline case
+	if not Settings.viritual_island: return false #Temporary disable trading of power to demonstrate baseline case
 	var buildings = PowerMarket.market_providers #A list of all builings with excess power
 	var best_provider: Building
 	var best_efficiency: float = 0.0

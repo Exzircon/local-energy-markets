@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bbbo0fv8d0o6w" path="res://data/scripts/sun_texture.gd" id="2_cup3q"]
 [ext_resource type="Script" uid="uid://dpchtmr168m3j" path="res://data/scripts/settings_container.gd" id="3_cup3q"]
 [ext_resource type="Script" uid="uid://cntpuu1vntyun" path="res://data/scripts/global_stats_display.gd" id="4_cup3q"]
+[ext_resource type="Script" uid="uid://c5bsqugsgtbg2" path="res://data/custom_classes/force_float_line_edit.gd" id="4_ewvcn"]
 [ext_resource type="Script" uid="uid://dr8kckvicssd4" path="res://data/scripts/building_stats_display.gd" id="4_s0n7b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cfgd"]
@@ -194,6 +195,7 @@ layout_mode = 2
 placeholder_text = "amount"
 alignment = 2
 expand_to_text_length = true
+script = ExtResource("4_ewvcn")
 
 [node name="HSeparator2" type="HSeparator" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=320960652]
 visible = false
@@ -228,24 +230,112 @@ layout_mode = 2
 layout_mode = 2
 text = "Inflation:"
 
-[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/InflationHBoxContainer" unique_id=1245003653]
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-size_flags_vertical = 6
-
-[node name="InflationHScrollBar" type="HScrollBar" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/InflationHBoxContainer" unique_id=138654179]
-custom_minimum_size = Vector2(80, 0)
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/InflationHBoxContainer" unique_id=1964341085]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 1
-min_value = 1.0
-max_value = 2.0
-step = 0.01
-value = 1.0
+size_flags_vertical = 6
 
-[node name="InflationValueLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/InflationHBoxContainer" unique_id=562841797]
+[node name="InflationLineEdit" type="LineEdit" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/InflationHBoxContainer" unique_id=1509824634]
+custom_minimum_size = Vector2(105, 0)
 layout_mode = 2
-text = "VALUE"
+placeholder_text = "amount"
+alignment = 2
+expand_to_text_length = true
+script = ExtResource("4_ewvcn")
+
+[node name="SystemLossHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=700550595]
+layout_mode = 2
+
+[node name="SystemLossButtonLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SystemLossHBoxContainer" unique_id=1037318125]
+layout_mode = 2
+text = "System Loss: "
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SystemLossHBoxContainer" unique_id=1027250517]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="SystemLossLineEdit" type="LineEdit" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SystemLossHBoxContainer" unique_id=1955387373]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+placeholder_text = "amount"
+alignment = 2
+expand_to_text_length = true
+script = ExtResource("4_ewvcn")
+
+[node name="SolarDegregationHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=604900358]
+layout_mode = 2
+
+[node name="DegregationSpeedButtonLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SolarDegregationHBoxContainer" unique_id=183088176]
+layout_mode = 2
+text = "Degregation: "
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SolarDegregationHBoxContainer" unique_id=2118685575]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="DegregationSpeedLineEdit" type="LineEdit" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/SolarDegregationHBoxContainer" unique_id=1056645399]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+placeholder_text = "amount"
+alignment = 2
+expand_to_text_length = true
+script = ExtResource("4_ewvcn")
+
+[node name="HSeparator4" type="HSeparator" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=1447609572]
+layout_mode = 2
+
+[node name="TradingEnabledHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=214594105]
+layout_mode = 2
+
+[node name="TradingEnabledButtonLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/TradingEnabledHBoxContainer" unique_id=1415976222]
+layout_mode = 2
+text = "LEM Enabled: "
+
+[node name="TraddingEnabledCheckButton" type="CheckButton" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/TradingEnabledHBoxContainer" unique_id=2063563932]
+layout_mode = 2
+button_pressed = true
+
+[node name="MaxExportHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=536477585]
+layout_mode = 2
+
+[node name="MaxExportButtonLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/MaxExportHBoxContainer" unique_id=578330422]
+layout_mode = 2
+text = "Max Export:"
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/MaxExportHBoxContainer" unique_id=1098318464]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="MaxExportLineEdit" type="LineEdit" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/MaxExportHBoxContainer" unique_id=2014143216]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+placeholder_text = "amount"
+alignment = 2
+expand_to_text_length = true
+script = ExtResource("4_ewvcn")
+
+[node name="YearlyMaxHBoxContainer" type="HBoxContainer" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer" unique_id=1479030464]
+layout_mode = 2
+
+[node name="YearlyMaxButtonLabel" type="Label" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/YearlyMaxHBoxContainer" unique_id=1883636215]
+layout_mode = 2
+text = "Yearly Max: "
+
+[node name="AlignmentPanel" type="Panel" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/YearlyMaxHBoxContainer" unique_id=686333312]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="YearlyMaxLineEdit" type="LineEdit" parent="HBoxContainer/LeftVBoxContainer/SettingsContainer/SettingsVBoxContainer/YearlyMaxHBoxContainer" unique_id=1486499600]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+placeholder_text = "amount"
+alignment = 2
+expand_to_text_length = true
+script = ExtResource("4_ewvcn")
 
 [node name="AlignmentPanel" type="Panel" parent="HBoxContainer" unique_id=197221559]
 layout_mode = 2

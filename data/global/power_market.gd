@@ -22,7 +22,7 @@ var sell_price: float:
 
 var market_providers: Array[Building] = []
 
-
+var sold_this_tick: float = 0.0
 
 func _ready() -> void:
 	TickEngine.tick_enviroment.connect(update)
@@ -36,7 +36,7 @@ func update() -> void:
 		if price_index >= len(hourly_prices):
 			price_index = 0
 		tick_counter = 0
-	var inflation: float = 1.04 ** int(Stats.time / 8760) #TODO: Account for inflation
+	var inflation: float = Settings.inflation ** int(Stats.time / 8760) #TODO: Account for inflation
 	buy_price = hourly_prices[price_index] * inflation
 	#buy_price = 0.151
 
@@ -47,6 +47,7 @@ func update() -> void:
 
 func cleanup() -> void:
 	market_providers.clear()
+	sold_this_tick = 0.0
 
 
 func load_hourly_prices_from_csv() -> Array:

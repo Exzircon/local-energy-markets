@@ -20,6 +20,7 @@ var power_lost_locally: float = 0.0
 ## Power sold to power power companies, through methods such as "Plusskunde"
 var power_sold: float = 0.0
 
+
 ## Money earned from selling power to power companies
 var money_earned: float = 0.0
 
@@ -56,13 +57,28 @@ var battery_power: float:
 			power += battery.power
 		return power
 
+
+var produced_this_year: float = 0.0
+var current_year: int = 0
+
+
+
+
+
 func _ready() -> void:
 	TickEngine.tick_enviroment.connect(auto_update)
 	#print("Format: ", format_num(1123456789.123456789))
+
+		
 	
 
 func auto_update() -> void:
 	time += 1.0 / Engine.physics_ticks_per_second
+	if current_year < int(time / 8760.0):
+		current_year += 1
+		print("Year ", current_year, " - exported: ",  format_num(produced_this_year), "watts")
+		produced_this_year = 0.0
+		#print(produced_this_year)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
@@ -86,8 +102,12 @@ func print_stats() -> void:
 	print("  -=-  ")
 	print("Current Spot Price: ", PowerMarket.buy_price, " øre/wH")
 	print("Current Sell Price: ", PowerMarket.sell_price, " øre/wH")
-	
-	
+	print("  -=-  ")
+	print("Inflation: ", Settings.inflation)
+	print("System Loss: ", Settings.base_system_loss, " + (", Settings.degregation_speed_year_one, " + ", Settings.degregation_speed, " ^ years-1)")
+	print("Trading Enabled: ", Settings.viritual_island)
+
+
 func format_num(num: float, delimiter: String = "_", deci: int = 2) -> String:
 	var input: String = str("%0.2f" % num)
 	var output: String = ""
@@ -114,11 +134,15 @@ func format_time(time_in: float, short_form: bool = false) -> String:
 
 	#Remove minutes and convert time to int
 	var minutes: int = int((time_in - floorf(time_in)) * 60)
+	@warning_ignore("shadowed_variable")
 	var time: int = int(time_in)
+	@warning_ignore("integer_division")
 	var years:int = time / 8760
 	time = time % 8760
+	@warning_ignore("integer_division")
 	var months:int = time / 720
 	time = time % 720
+	@warning_ignore("integer_division")
 	var days:int = time / 24
 	time = time % 24
 

@@ -6,7 +6,7 @@ class_name Building
 @export var production: float = 0.0: #Production in Watt
 	get():
 		if production_array and peak_PV_power > 0.0:
-			return production_array[production_idx] * peak_PV_power * (1.0-system_loss_percent) * Settings.degregation_factor / Engine.physics_ticks_per_second #The production array contains the total power (in Watt) produced in that hour. Divifing by Engine.physics_ticks_per_second gives us the value approperate for our simulation resolution.
+			return production_array[production_idx] * peak_PV_power * (1.0-Settings.base_system_loss) * Settings.degregation_factor / Engine.physics_ticks_per_second #The production array contains the total power (in Watt) produced in that hour. Divifing by Engine.physics_ticks_per_second gives us the value approperate for our simulation resolution.
 		else:
 			return production
 @export var consumption: float = 2222.22 / Engine.physics_ticks_per_second: ##W/h
@@ -40,7 +40,9 @@ var production_array: Array[float]
 var production_idx: int = 1
 var production_tick_counter: float = 0.0
 @export var peak_PV_power: float = 0.0
-@export_range(0.0, 1.0, 0.01) var system_loss_percent: float = 0.03 ##System power loss percentage (as float between 0.0 and 1.0)
+
+##System Loss Percent Moved to Settings.gd
+#@export_range(0.0, 1.0, 0.01) var system_loss_percent: float = 0.03 ##System power loss percentage (as float between 0.0 and 1.0)
 
 @export_group("Battery")
 @export var battery: Battery
@@ -113,6 +115,7 @@ func internal_power() -> void:
 	var power_saved: float = min(production, consumption)
 	Stats.money_saved += power_saved * PowerMarket.buy_price
 	Stats.power_produced += production
+	Stats.produced_this_year += production
 	Stats.power_consumed += consumption
 	if power > 0.0:
 		PowerMarket.market_providers.append(self)
@@ -147,10 +150,22 @@ func excess_power() -> void:
 		#print("BATTERY")
 		power -= battery.charge(power)
 	
-	Stats.power_sold += power
-	money_earned += power * PowerMarket.sell_price
-	Stats.money_earned += power * PowerMarket.sell_price
-	power = 0.0
+	if Settings.max_export_rate > 0:
+		var to_sell: float = min(Settings.max_export_rate - PowerMarket.sold_this_tick, power)
+		PowerMarket.sold_this_tick += to_sell
+		Stats.power_sold += to_sell
+		money_earned += to_sell * PowerMarket.sell_price
+		Stats.money_earned += to_sell * PowerMarket.sell_price
+		power -= to_sell
+		Stats.power_lost_locally += power
+		power = 0
+	else:
+		Stats.power_sold += power
+		money_earned += power * PowerMarket.sell_price
+		Stats.money_earned += power * PowerMarket.sell_price
+		power = 0
+
+
 
 func cleanup() -> void:
 	if not battery: return
